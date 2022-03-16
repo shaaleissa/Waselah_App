@@ -7,12 +7,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 4,
-        child: Scaffold(
+        length: 5,
+        child: Scaffo
+        shape: Roundeld(
             body: Padding(
               padding: EdgeInsets.all(8.0),
-              child: Card(
-                shape: RoundedRectangleBorder(
+              child: Card(dRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                     side:
                         BorderSide(color: const Color(0xff666a86), width: 20)),
