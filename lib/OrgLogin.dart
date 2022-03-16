@@ -1,7 +1,12 @@
+import 'package:application/Home1.dart';
+import 'package:application/WelcomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:adobe_xd/pinned.dart';
-import './Component21.dart';
-import './Component41.dart';
+
+import 'package:adobe_xd/page_link.dart';
+
+import 'package:flutter_svg/flutter_svg.dart';
+import 'LoginParts.dart';
 
 class OrgLogin extends StatelessWidget {
   OrgLogin({
@@ -9,220 +14,54 @@ class OrgLogin extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xffffffff),
-      body: Stack(
-        children: <Widget>[
-          Pinned.fromPins(
-            Pin(start: -45.0, end: 21.0),
-            Pin(size: 438.0, start: 0.0),
-            child: Container(
+    return DefaultTabController(
+        length: 4,
+        child: Scaffold(
+            body: Container(
+              width: double.infinity,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: const AssetImage('images/Untitled_Artwork 12.png'),
-                  fit: BoxFit.fill,
-                ),
+                gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+                  Color.fromARGB(104, 102, 106, 134),
+                  Color.fromARGB(92, 185, 131, 137)
+                ]),
               ),
-            ),
-          ),
-          Pinned.fromPins(
-            Pin(start: 0.0, end: 0.0),
-            Pin(size: 82.0, start: 41.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: const Color(0xff666a86),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0x29000000),
-                    offset: Offset(0, 3),
-                    blurRadius: 6,
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Pinned.fromPins(
-            Pin(start: 0.0, end: 0.0),
-            Pin(size: 82.0, end: 11.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: const Color(0xff666a86),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0x29000000),
-                    offset: Offset(0, 3),
-                    blurRadius: 6,
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Pinned.fromPins(
-            Pin(start: 39.0, end: 39.0),
-            Pin(size: 395.0, end: 119.0),
-            child: Component21(),
-          ),
-          Align(
-            alignment: Alignment(0.532, 0.667),
-            child: SizedBox(
-              width: 132.0,
-              height: 37.0,
-              child: Stack(
+              child: Column(
                 children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xff54494b),
-                      borderRadius: BorderRadius.circular(27.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0x29000000),
-                          offset: Offset(0, 3),
-                          blurRadius: 6,
-                        ),
-                      ],
-                    ),
+                  SizedBox(
+                    height: 80,
                   ),
+                  Header(),
+                  Expanded(
+                      child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(60),
+                          topRight: Radius.circular(60),
+                        )),
+                    child: InputWrapper(),
+                  ))
                 ],
               ),
             ),
-          ),
-          Align(
-            alignment: Alignment(0.486, 0.277),
-            child: SizedBox(
-              width: 169.0,
-              height: 41.0,
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xffffffff),
-                      borderRadius: BorderRadius.circular(21.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0x29000000),
-                          offset: Offset(0, 3),
-                          blurRadius: 6,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+            appBar: AppBar(
+              title: Text("WASELAH"),
+              centerTitle: true,
+              leading: IconButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => WelcomePage()));
+                  },
+                  icon: Icon(Icons.arrow_back)),
+              flexibleSpace: Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                  const Color(0xff666a86),
+                  Color.fromARGB(255, 185, 131, 137)
+                ], begin: Alignment.bottomRight, end: Alignment.topLeft)),
               ),
-            ),
-          ),
-          Align(
-            alignment: Alignment(0.486, 0.476),
-            child: SizedBox(
-              width: 169.0,
-              height: 41.0,
-              child: Component41(),
-            ),
-          ),
-          Align(
-            alignment: Alignment(-0.49, 0.271),
-            child: SizedBox(
-              width: 69.0,
-              height: 29.0,
-              child: Text(
-                'Admin',
-                style: TextStyle(
-                  fontFamily: 'PT Sans',
-                  fontSize: 25,
-                  color: const Color(0xff54494b),
-                  fontWeight: FontWeight.w700,
-                  shadows: [
-                    Shadow(
-                      color: const Color(0x29000000),
-                      offset: Offset(0, 3),
-                      blurRadius: 6,
-                    )
-                  ],
-                ),
-                softWrap: false,
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment(-0.54, 0.469),
-            child: SizedBox(
-              width: 101.0,
-              height: 29.0,
-              child: Text(
-                'Password',
-                style: TextStyle(
-                  fontFamily: 'PT Sans',
-                  fontSize: 25,
-                  color: const Color(0xff54494b),
-                  fontWeight: FontWeight.w700,
-                  shadows: [
-                    Shadow(
-                      color: const Color(0x29000000),
-                      offset: Offset(0, 3),
-                      blurRadius: 6,
-                    )
-                  ],
-                ),
-                softWrap: false,
-              ),
-            ),
-          ),
-          Pinned.fromPins(
-            Pin(size: 59.0, middle: 0.7127),
-            Pin(size: 29.0, end: 147.0),
-            child: Text(
-              'Login',
-              style: TextStyle(
-                fontFamily: 'PT Sans',
-                fontSize: 25,
-                color: const Color(0xffffffff),
-                fontWeight: FontWeight.w700,
-              ),
-              softWrap: false,
-            ),
-          ),
-          Align(
-            alignment: Alignment(-0.492, -0.227),
-            child: SizedBox(
-              width: 95.0,
-              height: 24.0,
-              child: Text(
-                'WASELAH',
-                style: TextStyle(
-                  fontFamily: 'SF Pro Rounded',
-                  fontSize: 20,
-                  color: const Color(0xff54494b),
-                  fontWeight: FontWeight.w700,
-                ),
-                softWrap: false,
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment(0.0, 0.077),
-            child: SizedBox(
-              width: 204.0,
-              height: 29.0,
-              child: Text(
-                'Organization Login',
-                style: TextStyle(
-                  fontFamily: 'PT Sans',
-                  fontSize: 25,
-                  color: const Color(0xff54494b),
-                  fontWeight: FontWeight.w700,
-                  shadows: [
-                    Shadow(
-                      color: const Color(0x29000000),
-                      offset: Offset(0, 3),
-                      blurRadius: 6,
-                    )
-                  ],
-                ),
-                softWrap: false,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+              elevation: 20.0,
+              titleSpacing: 20,
+            )));
   }
 }
