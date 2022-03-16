@@ -18,7 +18,7 @@ class Map_ extends StatelessWidget {
         child: Scaffold(
           body: Text("Map should be here") ,
             appBar: AppBar(
-          title: Text("WASELAH"),
+          title: Text("WASELA"),
           centerTitle: true,
           leading: IconButton(onPressed: () {
                   Navigator.push(context,
