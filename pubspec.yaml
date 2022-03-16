@@ -71,7 +71,7 @@ flutter:
     - images/home.png
     - images/labtop.svg.png
     - images/plastic.png
-    - assets/charityData.json
+    
 
     
   #   - images/a_dot_ham.jpeg
