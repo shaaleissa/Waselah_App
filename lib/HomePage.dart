@@ -1,4 +1,5 @@
 import 'package:application/AlberRequest.dart';
+import 'package:application/More.dart';
 import 'package:application/UserLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -37,21 +38,23 @@ class HomePage extends StatelessWidget {
                     )),
               ),
             ),
+            drawer: More(),
             appBar: AppBar(
               title: Text("WASELAH"),
               centerTitle: true,
-              leading:
-                  IconButton(onPressed: () {
+    
+                  
+              actions: [
+                IconButton(onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => UserLogin()
                       ));
                 }, icon: Icon(Icons.arrow_back)),
-              actions: [
                 IconButton(
                   onPressed: () {},
                   icon: Icon(Icons.search),
                 ),
-                IconButton(onPressed: () {}, icon: Icon(Icons.more)),
+               
               ],
               bottom: TabBar(tabs: [
                 Tab(
