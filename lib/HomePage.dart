@@ -9,14 +9,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
         length: 5,
-        child: Scaffo
-        shape: Roundeld(
+        child: Scaffold(
             body: Padding(
               padding: EdgeInsets.all(8.0),
-              child: Card(dRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    side:
-                        BorderSide(color: const Color(0xff666a86), width: 20)),
+             
                 child: SingleChildScrollView(
                     physics: BouncingScrollPhysics(),
                     child: Column(
@@ -37,7 +33,6 @@ class HomePage extends StatelessWidget {
                       ],
                     )),
               ),
-            ),
             drawer: More(),
             appBar: AppBar(
               title: Text("WASELAH"),
