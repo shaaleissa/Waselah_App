@@ -12,6 +12,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'AboutUs.dart';
 import 'Home1.dart';
+import 'LoginParts.dart';
+import 'LoginController.dart';
 
 class More extends StatelessWidget {
   More({
@@ -23,35 +25,39 @@ class More extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-
-          UserAccountsDrawerHeader(accountName: Text("John Doe"), accountEmail: Text("JohnDoe@gmail.com")
-          ,currentAccountPicture: CircleAvatar(
-            child: ClipOval(
-              child: Image.asset("images/plastic.png",
-              width:90,
-              height: 90,
-              fit: BoxFit.cover,
-              )
+          UserAccountsDrawerHeader(
+            accountName: Text(
+                InputWrapper.controller.googleAccount.value?.displayName ?? ''),
+            accountEmail:
+                Text(InputWrapper.controller.googleAccount.value?.email ?? ''),
+            currentAccountPicture: CircleAvatar(
+              child: ClipOval(
+                  child: Image.network(
+                InputWrapper.controller.googleAccount.value?.photoUrl ?? '',
+                width: 90,
+                height: 90,
+                fit: BoxFit.cover,
+              )),
             ),
-            ),
-            decoration: BoxDecoration(color:const Color(0xff666a86) ),
-          )
-          ,ListTile(
+            decoration: BoxDecoration(color: const Color(0xff666a86)),
+          ),
+          ListTile(
             leading: Icon(Icons.computer),
             title: Text('About Us'),
             onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AboutUs()));
-                  },
-
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => AboutUs()));
+            },
           ),
-          
-
+          ListTile(
+            leading: Icon(Icons.logout),
+            title: Text('Log Out'),
+            onTap: () {
+              
+            },
+          ),
         ],
       ),
     );
   }
 }
-
-
-

@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 5,
+        length: 4,
         child: Scaffold(
             body: Padding(
               padding: EdgeInsets.all(8.0),
