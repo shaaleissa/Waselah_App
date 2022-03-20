@@ -1,12 +1,12 @@
-import 'package:application/Home1.dart';
-import 'package:application/WelcomePage.dart';
+import 'package:application/responsive/NavigationBar.dart';
+import 'package:application/Screens/WelcomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:adobe_xd/pinned.dart';
 
 import 'package:adobe_xd/page_link.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
-import 'LoginParts.dart';
+import '../responsive/LoginParts.dart';
 
 class OrgLogin extends StatelessWidget {
   OrgLogin({

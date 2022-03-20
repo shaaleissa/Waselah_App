@@ -1,16 +1,24 @@
-import 'package:application/Home1.dart';
-import 'package:application/HomePage.dart';
-import 'package:flutter/material.dart';
 
-class AlberRequest extends StatelessWidget {
+import 'package:application/responsive/NavigationBar.dart';
+import 'package:application/Screens/HomePage.dart';
+import 'package:flutter/material.dart';
+import 'package:adobe_xd/pinned.dart';
+import 'UserLogin.dart';
+import 'package:adobe_xd/page_link.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+class Map extends StatelessWidget {
+  Map({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-return DefaultTabController(
+    return DefaultTabController(
         length: 4,
         child: Scaffold(
-          body: Text("Request text") ,
+          body: Text("Map should be here") ,
             appBar: AppBar(
-          title: Text("WASELAH"),
+          title: Text("WASELA"),
           centerTitle: true,
           leading: IconButton(onPressed: () {
                   Navigator.push(context,
@@ -36,3 +44,4 @@ return DefaultTabController(
         );
   }
   }
+

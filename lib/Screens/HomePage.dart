@@ -1,6 +1,6 @@
-import 'package:application/AlberRequest.dart';
-import 'package:application/More.dart';
-import 'package:application/UserLogin.dart';
+import 'package:application/Screens/AlberRequest.dart';
+import 'package:application/Screens/More.dart';
+import 'package:application/Screens/UserLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -10,29 +10,14 @@ class HomePage extends StatelessWidget {
     return DefaultTabController(
         length: 4,
         child: Scaffold(
-            body: Padding(
-              padding: EdgeInsets.all(8.0),
-             
-                child: SingleChildScrollView(
-                    physics: BouncingScrollPhysics(),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        AlberImage(),
-                        AlberText(context),
-                        JoodImage(),
-                        JoodText(context),
-                        ErtqaImage(),
-                        ErtqaText(context),
-                        IrqaImage(),
-                        IrqaText(context),
-                        SihatImage(),
-                        SihatText(
-                          context,
-                        )
-                      ],
-                    )),
-              ),
+            body:TabBarView(
+              children: [
+                 AllMenu(context),
+                 ElectMenu(context),
+                 PlasticMenu(context),
+                 ClothsMenu(context),
+
+              ]),
             drawer: More(),
             appBar: AppBar(
               title: Text("WASELAH"),
@@ -78,6 +63,99 @@ class HomePage extends StatelessWidget {
             )
            
            )
+            );
+  }
+
+  Padding AllMenu(BuildContext context) {
+    return Padding(
+            padding: EdgeInsets.all(8.0),
+           
+              child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      AlberImage(),
+                      AlberText(context),
+                      JoodImage(),
+                      JoodText(context),
+                      ErtqaImage(),
+                      ErtqaText(context),
+                      IrqaImage(),
+                      IrqaText(context),
+                      SihatImage(),
+                      SihatText(
+                        context,
+                      )
+                    ],
+                  )),
+            );
+  }
+
+  Padding ElectMenu(BuildContext context) {
+    return Padding(
+            padding: EdgeInsets.all(8.0),
+           
+              child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                    
+                      ErtqaImage(),
+                      ErtqaText(context),
+                      
+                     
+                    
+                    ],
+                  )),
+            );
+  }
+  Padding PlasticMenu(BuildContext context) {
+    return Padding(
+            padding: EdgeInsets.all(8.0),
+           
+              child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      AlberImage(),
+                      AlberText(context),
+                      JoodImage(),
+                      JoodText(context),
+                      IrqaImage(),
+                      IrqaText(context),
+                      SihatImage(),
+                      SihatText(
+                        context,
+                      )
+                    ],
+                  )),
+            );
+  }
+
+  Padding ClothsMenu(BuildContext context) {
+    return Padding(
+            padding: EdgeInsets.all(8.0),
+           
+              child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      AlberImage(),
+                      AlberText(context),
+                      JoodImage(),
+                      JoodText(context),
+                      IrqaImage(),
+                      IrqaText(context),
+                      SihatImage(),
+                      SihatText(
+                        context,
+                      )
+                    ],
+                  )),
             );
   }
 

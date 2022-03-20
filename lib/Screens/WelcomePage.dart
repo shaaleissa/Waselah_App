@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:adobe_xd/pinned.dart';
-import './OrgLogin.dart';
+import 'OrgLogin.dart';
 import 'package:adobe_xd/page_link.dart';
-import './UserLogin.dart';
+import 'UserLogin.dart';
 
 class WelcomePage extends StatelessWidget {
   WelcomePage({

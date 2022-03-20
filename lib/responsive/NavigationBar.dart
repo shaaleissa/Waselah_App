@@ -1,11 +1,11 @@
-import 'package:application/Map_.dart';
-import 'package:application/More.dart';
+import 'package:application/Screens/Map.dart';
+import 'package:application/Screens/More.dart';
 import 'package:flutter/material.dart';
 
 
-import 'HomePage.dart';
-import 'WelcomePage.dart';
-import 'Profile.dart';
+import '../Screens/HomePage.dart';
+import '../Screens/WelcomePage.dart';
+import '../Screens/Profile.dart';
 
 class Home1 extends StatefulWidget {
   @override
@@ -15,7 +15,7 @@ class Home1 extends StatefulWidget {
 class MainHome extends State<Home1> {
   final screens = [
     HomePage(),
-    Map_(),
+    Map(),
     Profile(),
   ];
   int currentIndex = 0;

@@ -1,4 +1,4 @@
-import 'package:application/LoginController.dart';
+import 'package:application/responsive/LoginController.dart';
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -8,7 +8,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:provider/provider.dart';
 
-import 'Home1.dart';
+import 'NavigationBar.dart';
 
 class InputWrapper extends StatelessWidget {
   static final controller = Get.put(LoginController());

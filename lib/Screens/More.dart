@@ -7,13 +7,13 @@ import 'package:adobe_xd/page_link.dart';
 
 //import './iPhoneXRXSMax117.dart';
 
-import './Map_.dart';
+import 'Map.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'AboutUs.dart';
-import 'Home1.dart';
-import 'LoginParts.dart';
-import 'LoginController.dart';
+import '../responsive/NavigationBar.dart';
+import '../responsive/LoginParts.dart';
+import '../responsive/LoginController.dart';
 
 class More extends StatelessWidget {
   More({
