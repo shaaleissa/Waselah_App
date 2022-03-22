@@ -26,9 +26,10 @@ class UserLogin extends StatelessWidget {
                 ]),
               ),
               child: Column(
-                children: <Widget>[
+                children: [
                   SizedBox(
                     height: 80,
+
                   ),
                   Header(),
                   Expanded(
@@ -64,4 +65,5 @@ class UserLogin extends StatelessWidget {
               titleSpacing: 20,
             )));
   }
+ 
 }
