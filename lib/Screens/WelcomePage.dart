@@ -505,8 +505,17 @@ class WelcomePage extends StatelessWidget {
               ),
             ),
           ),
+          Center(
+      child: RaisedButton(
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => UserLogin()));
+          },
+          child: Text("Continue to homepage")),
+    )
         ],
       ),
     );
   }
+  
 }
