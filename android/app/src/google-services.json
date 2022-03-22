@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "401980964015",
+    "project_id": "waselah-44d39",
+    "storage_bucket": "waselah-44d39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401980964015:android:8fb5f5ac4a6c4fa04b685a",
+        "android_client_info": {
+          "package_name": "com.example.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401980964015-hgeu4gdbmj87bq7tqkbdalldfcucvbil.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIVxqzhoFFGQdmahz4uLYY1MygBkaY-U0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401980964015-hgeu4gdbmj87bq7tqkbdalldfcucvbil.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
