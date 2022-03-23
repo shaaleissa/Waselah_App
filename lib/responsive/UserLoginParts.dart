@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:provider/provider.dart';
@@ -14,9 +15,46 @@ class InputWrapper extends StatelessWidget {
   static final controller = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Obx(
+    return Column(
+      children:[ 
+        SizedBox(
+          width: 50,
+          height: 50,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text("Waselah presents you with a link that allows\nyou to share your goodness" ,
+          style: TextStyle(
+            color: Color.fromARGB(255, 185, 131, 137),
+            fontWeight: FontWeight.w700,
+            fontSize: 25,
+          
+
+          ), 
+          textAlign: TextAlign.center,
+          ),
+        ),
+        // this below code will be removed it's just so you guys can enter the homepage incase of any errors with ggogle sign in 
+        SizedBox(
+          width: 50,
+          height: 50,
+        ),
+      Center(
+      child: RaisedButton(
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Home1()));
+          },
+          child: Text("Continue to homepage",
+          )),
+    ),
+    // up utill here 
+    SizedBox(
+          width: 50,
+          height: 50,
+        ),
+        Center(
+         child: Obx(
           () {
             if (controller.googleAccount.value == null)
               return LoginButton();
@@ -25,6 +63,9 @@ class InputWrapper extends StatelessWidget {
           },
         ),
       ),
+      
+
+      ],
     );
   }
 
@@ -35,7 +76,15 @@ class InputWrapper extends StatelessWidget {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Home1()));
           },
-          child: Text("Continue to homepage")),
+          child: Padding(
+            padding: EdgeInsets.all(15.0)
+          ,child: Text("Continue to homepage",style: TextStyle(
+          color: Colors.white,
+          fontSize: 15,
+          fontWeight: FontWeight.bold
+        ),
+      ),
+          ),),
     );
   }
 
@@ -44,7 +93,7 @@ class InputWrapper extends StatelessWidget {
         style: ElevatedButton.styleFrom(
             primary: const Color(0xff666a86),
             onPrimary: Colors.black,
-            minimumSize: Size(double.infinity, 50)),
+            minimumSize: Size(50, 50)),
         onPressed: () {
           controller.login();
         },

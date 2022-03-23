@@ -41,16 +41,8 @@ class UserLogin extends StatelessWidget {
                           topRight: Radius.circular(60),
                         )),
                     child: InputWrapper(),
+                  ),
                   )
-                  )
-                   ,Center(
-      child: RaisedButton(
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Home1()));
-          },
-          child: Text("Continue to homepage")),
-    ),
                 ],
               ),
             ),
