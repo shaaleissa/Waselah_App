@@ -12,7 +12,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'AboutUs.dart';
 import '../responsive/NavigationBar.dart';
-import '../responsive/LoginParts.dart';
+import '../responsive/UserLoginParts.dart';
 import '../responsive/LoginController.dart';
 
 class More extends StatelessWidget {

@@ -83,14 +83,6 @@ class Header extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 18),
             ),
           ),
-          Center(
-      child: RaisedButton(
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Home1()));
-          },
-          child: Text("Continue to homepage")),
-    ),
         ],
       ),
     );

@@ -1,12 +1,7 @@
-import 'package:application/responsive/NavigationBar.dart';
+import 'package:application/Components/Input.dart';
 import 'package:application/Screens/WelcomePage.dart';
 import 'package:flutter/material.dart';
-import 'package:adobe_xd/pinned.dart';
-
-import 'package:adobe_xd/page_link.dart';
-
-import 'package:flutter_svg/flutter_svg.dart';
-import '../responsive/LoginParts.dart';
+import '../responsive/UserLoginParts.dart';
 
 class OrgLogin extends StatelessWidget {
   OrgLogin({
@@ -39,7 +34,7 @@ class OrgLogin extends StatelessWidget {
                           topLeft: Radius.circular(60),
                           topRight: Radius.circular(60),
                         )),
-                    child: InputWrapper(),
+                    child: Input(),
                   ))
                 ],
               ),

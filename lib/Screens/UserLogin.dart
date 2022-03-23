@@ -6,7 +6,7 @@ import 'package:adobe_xd/pinned.dart';
 import 'package:adobe_xd/page_link.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
-import '../responsive/LoginParts.dart';
+import '../responsive/UserLoginParts.dart';
 
 class UserLogin extends StatelessWidget {
   UserLogin({
@@ -41,7 +41,16 @@ class UserLogin extends StatelessWidget {
                           topRight: Radius.circular(60),
                         )),
                     child: InputWrapper(),
-                  ))
+                  )
+                  )
+                   ,Center(
+      child: RaisedButton(
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Home1()));
+          },
+          child: Text("Continue to homepage")),
+    ),
                 ],
               ),
             ),
