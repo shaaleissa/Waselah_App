@@ -29,7 +29,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  adobe_xd: ^2.0.1 
+  adobe_xd: ^2.0.1
+
+
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -42,6 +45,7 @@ dependencies:
   get: ^4.6.1
   google_fonts: ^2.3.1
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -52,6 +56,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
