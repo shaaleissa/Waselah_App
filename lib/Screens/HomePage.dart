@@ -171,12 +171,17 @@ class HomePage extends StatelessWidget {
           Text("Location : Eastren Province"),
           Text("Services : "),
           Center(
-            child: RaisedButton(
+            child: ElevatedButton.icon(
+               style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 139, 143, 173),
+            onPrimary: Colors.white,
+            minimumSize: Size(30, 30)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => AlberRequest()));
                 },
-                child: Text("Request Pick Up")),
+                icon:Icon(Icons.request_page),
+                label: Text("Request Pick Up")),
           ),
         ],
       );
@@ -200,12 +205,18 @@ class HomePage extends StatelessWidget {
           Text("Location : Eastren Province"),
           Text("Services : "),
           Center(
-            child: RaisedButton(
+            child: ElevatedButton.icon(
+               style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 139, 143, 173),
+            onPrimary: Colors.white,
+            minimumSize: Size(30, 30)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => JoodRequest()));
                 },
-                child: Text("Request Pick Up")),
+                icon:Icon(Icons.request_page),
+                label: Text("Request Pick Up")),
+               
           ),
         ],
       );
@@ -229,12 +240,17 @@ class HomePage extends StatelessWidget {
           Text("Location : Eastren Province"),
           Text("Services :"),
           Center(
-            child: RaisedButton(
+            child: ElevatedButton.icon(
+               style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 139, 143, 173),
+            onPrimary: Colors.white,
+            minimumSize: Size(30, 30)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => EtrqaRequest()));
                 },
-                child: Text("Request Pick Up")),
+                icon: Icon(Icons.request_page),
+                label: Text("Request Pick Up")),
           ),
         ],
       );
@@ -257,12 +273,17 @@ class HomePage extends StatelessWidget {
           Text("Location : Eastren Province"),
           Text("Services :"),
           Center(
-            child: RaisedButton(
+            child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 139, 143, 173),
+            onPrimary: Colors.white,
+            minimumSize: Size(30, 30)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => SihatRequest()));
                 },
-                child: Text("Request Pick Up")),
+                icon:Icon(Icons.request_page),
+                label: Text("Request Pick Up")),
           ),
         ],
       );

@@ -27,7 +27,14 @@ class Profile extends StatelessWidget {
                crossAxisAlignment: CrossAxisAlignment.center,
                children: [
                  // here u can add 
+                 CounterScreenState(),
                  BannerWidgetArea(),
+                 Text("Hello World", 
+                 style: TextStyle(
+                   fontSize: 30,
+                   fontWeight: FontWeight.bold,
+                 ))
+                 
                ],
              ) ,))
 
@@ -122,5 +129,65 @@ class BannerWidgetArea extends StatelessWidget {
         children: banners,
       ),
     );
+  }
+}
+
+
+class CounterScreenState extends StatefulWidget {
+  @override
+  CounterScreen createState() => CounterScreen();
+}
+class CounterScreen extends State<CounterScreenState> {
+  @override
+  Widget build(BuildContext context) {
+    return  Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+        children: [ 
+          Container(
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(color: Color.fromARGB(255, 102, 106, 134))
+            )
+          ),
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: "Enter your goals",
+              hintStyle: TextStyle(color: Color.fromARGB(255, 102, 106, 134)),
+              border: InputBorder.none
+            ),
+          ),
+        ),
+          Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              
+                    FloatingActionButton(
+                      child: Icon(Icons.add),
+                      onPressed:(){
+
+                      },
+                    ),
+                     FloatingActionButton(
+                      child: Icon(Icons.minimize),
+                      onPressed:(){
+
+                      },
+                    ),
+                      FloatingActionButton(
+                      child: Icon(Icons.reset_tv),
+                      onPressed:(){
+
+                      },
+                    ),
+                  ],
+                ),
+        )
+        ],
+        
+    );
+
   }
 }

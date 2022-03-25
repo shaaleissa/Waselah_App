@@ -16,82 +16,76 @@ class InputWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children:[ 
+      children: [
         SizedBox(
           width: 50,
           height: 50,
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text("Waselah presents you with a link that allows\nyou to share your goodness" ,
-          style: TextStyle(
-            color: Color.fromARGB(255, 185, 131, 137),
-            fontWeight: FontWeight.w700,
-            fontSize: 25,
-          
-
-          ), 
-          textAlign: TextAlign.center,
+          child: Text(
+            "Waselah presents you with a link that allows\nyou to share your goodness",
+            style: TextStyle(
+              color: Color.fromARGB(255, 185, 131, 137),
+              fontWeight: FontWeight.w700,
+              fontSize: 25,
+            ),
+            textAlign: TextAlign.center,
           ),
         ),
-        // this below code will be removed it's just so you guys can enter the homepage incase of any errors with ggogle sign in 
+        // this below code will be removed it's just so you guys can enter the homepage incase of any errors with ggogle sign in
         SizedBox(
           width: 50,
           height: 50,
         ),
-      Center(
-      child: RaisedButton(
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Home1()));
-          },
-          child: Text("Continue to homepage",
-          )),
-    ),
-    // up utill here 
-    SizedBox(
+        Center(
+          child: RaisedButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Home1()));
+              },
+              child: Text(
+                "Continue to homepage",
+              )),
+        ),
+        // up utill here
+        SizedBox(
           width: 50,
           height: 50,
         ),
         Center(
-         child: Obx(
-          () {
-            if (controller.googleAccount.value == null)
-              return LoginButton();
-            else
-              return ButtonToHome(context);
-          },
+          child: Obx(
+            () {
+              if (controller.googleAccount.value == null)
+                return LoginButton();
+              else
+                return ButtonToHome(context);
+            },
+          ),
         ),
-      ),
-      
-
       ],
     );
   }
 
-  Center ButtonToHome(BuildContext context) {
-    return Center(
-      child: RaisedButton(
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Home1()));
-          },
-          child: Padding(
-            padding: EdgeInsets.all(15.0)
-          ,child: Text("Continue to homepage",style: TextStyle(
-          color: Colors.white,
-          fontSize: 15,
-          fontWeight: FontWeight.bold
-        ),
-      ),
-          ),),
+  ElevatedButton ButtonToHome(BuildContext context) {
+    return ElevatedButton.icon(
+      style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 139, 143, 173),
+            onPrimary: Colors.black,
+            minimumSize: Size(50, 50)),
+      onPressed: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Home1()));
+      },
+      icon: Icon(Icons.home),
+      label: Text("Go To Homepage"),
     );
   }
 
   ElevatedButton LoginButton() {
     return ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
-            primary: const Color(0xff666a86),
+            primary: Color.fromARGB(255, 139, 143, 173),
             onPrimary: Colors.black,
             minimumSize: Size(50, 50)),
         onPressed: () {
@@ -137,4 +131,3 @@ class Header extends StatelessWidget {
     );
   }
 }
-
