@@ -2,7 +2,11 @@ import 'package:application/Screens/AlberRequest.dart';
 import 'package:application/Screens/More.dart';
 import 'package:application/Screens/UserLogin.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'AttaRequest.dart';
+import 'ErtqaRequest.dart';
+import 'JoodRequest.dart';
+import 'QatifRequest.dart';
+import 'SihatRequest.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -10,31 +14,27 @@ class HomePage extends StatelessWidget {
     return DefaultTabController(
         length: 4,
         child: Scaffold(
-            body:TabBarView(
-              children: [
-                 AllMenu(context),
-                 ElectMenu(context),
-                 PlasticMenu(context),
-                 ClothsMenu(context),
-
-              ]),
+            body: TabBarView(children: [
+              AllMenu(context),
+              ElectMenu(context),
+              PlasticMenu(context),
+              ClothsMenu(context),
+            ]),
             drawer: More(),
             appBar: AppBar(
               title: Text("WASELAH"),
               centerTitle: true,
-    
-                  
               actions: [
-                IconButton(onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => UserLogin()
-                      ));
-                }, icon: Icon(Icons.arrow_back)),
+                IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => UserLogin()));
+                    },
+                    icon: Icon(Icons.arrow_back)),
                 IconButton(
                   onPressed: () {},
                   icon: Icon(Icons.search),
                 ),
-               
               ],
               bottom: TabBar(tabs: [
                 Tab(
@@ -60,103 +60,95 @@ class HomePage extends StatelessWidget {
               ),
               elevation: 20.0,
               titleSpacing: 20,
-            )
-           
-           )
-            );
+            )));
   }
 
   Padding AllMenu(BuildContext context) {
     return Padding(
-            padding: EdgeInsets.all(8.0),
-           
-              child: SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      AlberImage(),
-                      AlberText(context),
-                      JoodImage(),
-                      JoodText(context),
-                      ErtqaImage(),
-                      ErtqaText(context),
-                      IrqaImage(),
-                      IrqaText(context),
-                      SihatImage(),
-                      SihatText(
-                        context,
-                      )
-                    ],
-                  )),
-            );
+      padding: EdgeInsets.all(8.0),
+      child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              AlberImage(),
+              AlberText(context),
+              JoodImage(),
+              JoodText(context),
+              ErtqaImage(),
+              ErtqaText(context),
+              AttaImage(),
+              AttaText(context),
+              SihatImage(),
+              SihatText(
+                context,
+              ),
+              QatifImage(),
+              QatifText(context),
+            ],
+          )),
+    );
   }
 
   Padding ElectMenu(BuildContext context) {
     return Padding(
-            padding: EdgeInsets.all(8.0),
-           
-              child: SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                    
-                      ErtqaImage(),
-                      ErtqaText(context),
-                      
-                     
-                    
-                    ],
-                  )),
-            );
+      padding: EdgeInsets.all(8.0),
+      child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ErtqaImage(),
+              ErtqaText(context),
+            ],
+          )),
+    );
   }
+
   Padding PlasticMenu(BuildContext context) {
     return Padding(
-            padding: EdgeInsets.all(8.0),
-           
-              child: SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      AlberImage(),
-                      AlberText(context),
-                      JoodImage(),
-                      JoodText(context),
-                      IrqaImage(),
-                      IrqaText(context),
-                      SihatImage(),
-                      SihatText(
-                        context,
-                      )
-                    ],
-                  )),
-            );
+      padding: EdgeInsets.all(8.0),
+      child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              AlberImage(),
+              AlberText(context),
+              JoodImage(),
+              JoodText(context),
+              SihatImage(),
+              SihatText(
+                context,
+              ),
+              AttaImage(),
+              AttaText(context),
+            ],
+          )),
+    );
   }
 
   Padding ClothsMenu(BuildContext context) {
     return Padding(
-            padding: EdgeInsets.all(8.0),
-           
-              child: SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      AlberImage(),
-                      AlberText(context),
-                      JoodImage(),
-                      JoodText(context),
-                      IrqaImage(),
-                      IrqaText(context),
-                      SihatImage(),
-                      SihatText(
-                        context,
-                      )
-                    ],
-                  )),
-            );
+      padding: EdgeInsets.all(8.0),
+      child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              AlberImage(),
+              AlberText(context),
+              JoodImage(),
+              JoodText(context),
+              SihatImage(),
+              SihatText(
+                context,
+              ),
+              AttaImage(),
+              AttaText(context),
+            ],
+          )),
+    );
   }
 
   Widget AlberImage() => Image.asset(
@@ -174,10 +166,10 @@ class HomePage extends StatelessWidget {
             textAlign: TextAlign.center),
         childrenPadding: EdgeInsets.all(16),
         children: [
-          Text("About Alber :"),
+          Text(
+              "About Alber : Alber chairty thrives to strength the potentials of the eastren province community to help those in need "),
           Text("Location : Eastren Province"),
-          Text("Services :"),
-          Text("PickUp Service ?"),
+          Text("Services : "),
           Center(
             child: RaisedButton(
                 onPressed: () {
@@ -202,7 +194,20 @@ class HomePage extends StatelessWidget {
             ),
             textAlign: TextAlign.center),
         childrenPadding: EdgeInsets.all(16),
-        children: [],
+        children: [
+          Text(
+              "About Jood : a non- profit organization running and founded by women to help serve, support families in need by offering financial aids as well as helping create a hand in hand community    "),
+          Text("Location : Eastren Province"),
+          Text("Services : "),
+          Center(
+            child: RaisedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => JoodRequest()));
+                },
+                child: Text("Request Pick Up")),
+          ),
+        ],
       );
   Widget ErtqaImage() => Image.asset(
         "images/ertqa.jpg",
@@ -218,7 +223,20 @@ class HomePage extends StatelessWidget {
             ),
             textAlign: TextAlign.center),
         childrenPadding: EdgeInsets.all(16),
-        children: [],
+        children: [
+          Text(
+              " About Ertqa :Ertiqa is a Non-Profit Organization registered with the Ministry of Human Resources and Social Development, concerned with the collection, refurbishment and distribution of used computers to educational and social institutes. In association with “Extra”."),
+          Text("Location : Eastren Province"),
+          Text("Services :"),
+          Center(
+            child: RaisedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => EtrqaRequest()));
+                },
+                child: Text("Request Pick Up")),
+          ),
+        ],
       );
   Widget SihatImage() => Image.asset(
         "images/sihat.jpeg",
@@ -235,26 +253,74 @@ class HomePage extends StatelessWidget {
             textAlign: TextAlign.center),
         childrenPadding: EdgeInsets.all(16),
         children: [
-          Text("About Alber :"),
+          Text(" About Sihat : "),
           Text("Location : Eastren Province"),
           Text("Services :"),
-          Text("PickUp Service ?"),
+          Center(
+            child: RaisedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SihatRequest()));
+                },
+                child: Text("Request Pick Up")),
+          ),
         ],
       );
-  Widget IrqaImage() => Image.asset(
-        "images/irqa.png",
+  Widget AttaImage() => Image.asset(
+        "images/alatta.png",
         width: double.infinity,
         height: 200,
         fit: BoxFit.scaleDown,
       );
-  Widget IrqaText(BuildContext context) => ExpansionTile(
-        title: Text("Irqa Charity ",
+  Widget AttaText(BuildContext context) => ExpansionTile(
+        title: Text("Ata'a Charity ",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
             textAlign: TextAlign.center),
         childrenPadding: EdgeInsets.all(16),
-        children: [],
+        children: [
+          Text(" About Ata'a :"),
+          Text("Location : Eastren Province"),
+          Text("Services :"),
+          Center(
+            child: RaisedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AttaRequest()));
+                },
+                child: Text("Request Pick Up")),
+          ),
+        ],
+      );
+
+  Widget QatifImage() => Image.asset(
+        "images/qatif.png",
+        width: double.infinity,
+        height: 200,
+        fit: BoxFit.scaleDown,
+      );
+  Widget QatifText(BuildContext context) => ExpansionTile(
+        title: Text("Qatif Charity ",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center),
+        childrenPadding: EdgeInsets.all(16),
+        children: [
+          Text(" About Qatif :"),
+          Text("Location : Eastren Province"),
+          Text("Services :"),
+          Center(
+            child: RaisedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => QatifRequest()));
+                },
+                child: Text("Request Pick Up")),
+          ),
+        ],
       );
 }
