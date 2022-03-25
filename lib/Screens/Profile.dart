@@ -124,3 +124,109 @@ class BannerWidgetArea extends StatelessWidget {
     );
   }
 }
+
+// main.dart
+
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+            appBar: AppBar(
+                title: Text('Count TextInput Inside Text Length')
+            ),
+            body: Center(
+                child: TextFieldClass()
+            )
+        )
+    );
+  }
+}
+
+class TextFieldClass extends StatefulWidget {
+
+  _TextFieldState createState() => _TextFieldState();
+
+}
+
+class _TextFieldState extends State<TextFieldClass> {
+
+  final textController = TextEditingController();
+
+  int charLength = 0;
+
+  _onChanged(String value) {
+    setState(() {
+      charLength = value.length;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+
+              Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child :
+                  Text("Length = $charLength", style: TextStyle(fontSize: 20))
+              ),
+
+              Container(
+                  width: 280,
+                  padding: EdgeInsets.all(10.0),
+                  child: TextField(
+                    controller: textController,
+                    autocorrect: true,
+                    decoration: InputDecoration(hintText: 'Enter Some Text Here'),
+                    onChanged: _onChanged,
+                  )
+              ),
+
+            ],
+          ),
+        ));
+  }
+}
+void man() => runApp(CounterApp());
+class CounterApp extends StatelessWidget {
+@override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter',
+      home: CounterScreenState(),
+    );
+  }
+}
+class CounterScreenState extends StatefulWidget {
+  @override
+  CounterScreen createState() => CounterScreen();
+}
+class CounterScreen extends State<CounterScreenState> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Counter Screen'),),
+      body: Center(
+        child: Row(
+          children: [
+                  FloatingActionButton(
+                    child: Icon(Icons.add),
+                    onPressed:(){},
+                  )
+                ],
+              )
+            )
+
+
+    );
+
+  }
+}
+
