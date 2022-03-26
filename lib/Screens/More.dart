@@ -1,7 +1,9 @@
+import '../Screens/UserLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:adobe_xd/pinned.dart';
 //import './iPhoneXRXSMax111.dart';
 import 'package:adobe_xd/page_link.dart';
+import 'package:get/get.dart';
 //import './iPhoneXRXSMax115.dart';
 //import './iPhoneXRXSMax116.dart';
 
@@ -19,6 +21,7 @@ class More extends StatelessWidget {
   More({
     Key? key,
   }) : super(key: key);
+  static final controller = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -52,8 +55,10 @@ class More extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.logout),
             title: Text('Log Out'),
-            onTap: () {
-              
+            onTap: () async {
+               await controller.logout();
+                Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => UserLogin()));
             },
           ),
         ],

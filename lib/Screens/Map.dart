@@ -69,9 +69,6 @@ class Map extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => Home1()
                     ));
               }, icon: Icon(Icons.arrow_back)),
-              actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search),),
-                IconButton(onPressed: () {}, icon: Icon(Icons.more)),
-              ],
               flexibleSpace: Container(
                 decoration: BoxDecoration(
                     gradient: LinearGradient(

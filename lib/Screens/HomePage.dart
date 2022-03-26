@@ -2,6 +2,7 @@ import 'package:application/Screens/AlberRequest.dart';
 import 'package:application/Screens/More.dart';
 import 'package:application/Screens/UserLogin.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'AttaRequest.dart';
 import 'ErtqaRequest.dart';
 import 'JoodRequest.dart';
@@ -46,10 +47,10 @@ class HomePage extends StatelessWidget {
                   text: "Electronics",
                 ),
                 Tab(
-                  icon: Icon(Icons.recycling_rounded),
+                  icon: FaIcon(FontAwesomeIcons.recycle),
                   text: "Plastic",
                 ),
-                Tab(icon: Icon(Icons.woman), text: "Clothes"),
+                Tab(icon: FaIcon(FontAwesomeIcons.hatWizard), text: "Clothes"),
               ]),
               flexibleSpace: Container(
                 decoration: BoxDecoration(
@@ -306,12 +307,17 @@ class HomePage extends StatelessWidget {
           Text("Location : Eastren Province"),
           Text("Services :"),
           Center(
-            child: RaisedButton(
+            child: ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 139, 143, 173),
+            onPrimary: Colors.white,
+            minimumSize: Size(30, 30)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => AttaRequest()));
                 },
-                child: Text("Request Pick Up")),
+                icon: Icon(Icons.request_page),
+                label: Text("Request Pick Up")),
           ),
         ],
       );
@@ -335,12 +341,17 @@ class HomePage extends StatelessWidget {
           Text("Location : Eastren Province"),
           Text("Services :"),
           Center(
-            child: RaisedButton(
+            child: ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 139, 143, 173),
+            onPrimary: Colors.white,
+            minimumSize: Size(30, 30)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => QatifRequest()));
                 },
-                child: Text("Request Pick Up")),
+                icon:Icon(Icons.request_page),
+                label: Text("Request Pick Up")),
           ),
         ],
       );

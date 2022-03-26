@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -8,7 +9,9 @@ class LoginController extends GetxController {
   login() async {
     googleAccount.value = await _googleSignIn.signIn();
   }
-   logout() async {
+
+  logout() async {
     googleAccount.value = await _googleSignIn.signOut();
   }
+
 }
