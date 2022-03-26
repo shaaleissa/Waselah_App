@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:application/Screens/UserLogin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
@@ -32,13 +33,25 @@ class Profile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 // here u can add
-                CounterScreenState(),
-                BannerWidgetArea(),
-                Text("Hello World",
+                Header(),
+                    Counter(),
+                    SizedBox(
+                      width: 40,
+                      height: 40,
+                    ),
+                    BannerWidgetArea(),
+                     Padding(
+                       padding: const EdgeInsets.fromLTRB(8, 60, 8, 40),
+                       child: Text(" \" We make a living by what we get, but we make a life by what we give \" ",
                     style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    )),
+                      color: const Color(0xff666a86),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                    ),
+                    textAlign: TextAlign.center,
+                    ),
+                     ),
               ],
             ),
           ))),
@@ -124,46 +137,32 @@ class BannerWidgetArea extends StatelessWidget {
   }
 }
 
-class CounterScreenState extends StatefulWidget {
+class Header extends StatefulWidget {
+  const Header({ Key? key }) : super(key: key);
+
   @override
-  CounterScreen createState() => CounterScreen();
+  State<Header> createState() => _HeaderState();
 }
 
-class CounterScreen extends State<CounterScreenState> {
+class _HeaderState extends State<Header> {
+  @override
   static final controller = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-    int count = 2;
-    void _incrementCount() {
-      setState(() {
-        count = count + 1;
-      });
-    }
-
-    void _decrementCount() {
-      setState(() {
-        count = count - 1;
-      });
-    }
-
-    void _resetCount() {
-      setState(() {
-        count = 0;
-      });
-    }
+  
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          color: Color.fromARGB(255, 185, 131, 137),
+          color:  const Color(0xff666a86),
           height: 120,
           width: screenWidth,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(5, 10, 5, 4),
             child: Align(
-              alignment: Alignment.centerLeft,
+              alignment: Alignment.center,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 textDirection: TextDirection.ltr,
@@ -181,14 +180,14 @@ class CounterScreen extends State<CounterScreenState> {
                     controller.googleAccount.value!.displayName.toString(),
                     style: TextStyle(
                         fontSize: 15,
-                        fontWeight: FontWeight.w100,
+                        fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
                   Text(
                     controller.googleAccount.value!.email,
                     style: TextStyle(
                         fontSize: 15,
-                        fontWeight: FontWeight.w100,
+                        fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
                 ],
@@ -196,38 +195,74 @@ class CounterScreen extends State<CounterScreenState> {
             ),
           ),
         ),
-        Text("The desired goal"),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              FloatingActionButton(
-                backgroundColor: Color(0xff666a86),
-                child: Icon(Icons.add),
-                onPressed: () {
-                  _incrementCount();
-                },
-              ),
-              Text(count.toString()),
-              FloatingActionButton(
-                backgroundColor: Color(0xff666a86),
-                child: Icon(Icons.minimize),
-                onPressed: () {
-                  _decrementCount();
-                },
-              ),
-              FloatingActionButton(
-                backgroundColor: Color(0xff666a86),
-                child: Icon(Icons.reset_tv),
-                onPressed: () {
-                  _resetCount();
-                },
-              ),
-            ],
-          ),
-        ),
       ],
+    );
+  }
+}
+
+class Counter extends StatefulWidget {
+  const Counter({ Key? key }) : super(key: key);
+
+  @override
+  State<Counter> createState() => _CounterState();
+}
+
+class _CounterState extends State<Counter> {
+    int _count = 0;
+    void _incrementCount() {
+      setState(() {
+        _count = _count + 1;
+      });
+    }
+
+    void _decrementCount() {
+      setState(() {
+        _count = _count - 1;
+      });
+    }
+
+    void _resetCount() {
+      setState(() {
+        _count = 0;
+      });
+    }
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(15),
+      child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'Your Goals:',
+              ),
+              Text(
+                '$_count',
+                style: Theme.of(context).textTheme.headline4,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  FloatingActionButton(
+                     backgroundColor:Color.fromARGB(255, 185, 131, 137) ,
+                    onPressed: _incrementCount,
+          tooltip: 'Increment',
+          child: const FaIcon(FontAwesomeIcons.plus),),
+          FloatingActionButton(
+             backgroundColor: Color.fromARGB(255, 185, 131, 137),
+                    onPressed: _decrementCount,
+          tooltip: 'Decrement',
+          child: const FaIcon(FontAwesomeIcons.minus),),
+          FloatingActionButton(
+            backgroundColor:Color.fromARGB(255, 185, 131, 137) ,
+                    onPressed: _resetCount,
+          tooltip: 'Reset',
+          child: const Icon(Icons.refresh_sharp),)
+                ],
+              )
+            ],
+          
+      ),
     );
   }
 }
