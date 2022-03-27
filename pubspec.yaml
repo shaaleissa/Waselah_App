@@ -48,11 +48,14 @@ dependencies:
   syncfusion_flutter_datepicker: ^19.4.56
   firebase_core: ^1.13.1
   geolocator: ^8.2.0
+  moor_flutter: ^4.1.0
+  
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  moor_generator: ^4.6.0+1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
