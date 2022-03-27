@@ -32,10 +32,6 @@ class HomePage extends StatelessWidget {
                           MaterialPageRoute(builder: (context) => UserLogin()));
                     },
                     icon: Icon(Icons.arrow_back)),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.search),
-                ),
               ],
               bottom: TabBar(tabs: [
                 Tab(
@@ -101,6 +97,10 @@ class HomePage extends StatelessWidget {
             children: [
               ErtqaImage(),
               ErtqaText(context),
+              AttaImage(),
+              AttaText(context),
+              AlberImage(),
+              AlberText(context),
             ],
           )),
     );
@@ -114,14 +114,6 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              AlberImage(),
-              AlberText(context),
-              JoodImage(),
-              JoodText(context),
-              SihatImage(),
-              SihatText(
-                context,
-              ),
               AttaImage(),
               AttaText(context),
             ],
@@ -143,8 +135,7 @@ class HomePage extends StatelessWidget {
               JoodText(context),
               SihatImage(),
               SihatText(
-                context,
-              ),
+                context,),
               AttaImage(),
               AttaText(context),
             ],
