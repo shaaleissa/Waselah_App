@@ -118,7 +118,23 @@ class BannerWidgetArea extends StatelessWidget {
                           Color.fromARGB(90, 177, 152, 152)
                         ])),
               ),
-
+               Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      bannerItems[x],
+                      style: TextStyle(fontSize: 25.0, color: Colors.white),
+                    ),
+                    Text(
+                      "More than 40% Off",
+                      style: TextStyle(fontSize: 12.0, color: Colors.white),
+                    )
+                  ],
+                ),
+              )
             ],
           ),
         ),
