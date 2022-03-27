@@ -56,7 +56,7 @@ class Profile extends StatelessWidget {
             ),
           ))),
       appBar: AppBar(
-        title: Text("WASELA"),
+        title: Text("WASELAH"),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
