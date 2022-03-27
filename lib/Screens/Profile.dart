@@ -12,10 +12,10 @@ import '../responsive/LoginController.dart';
 
 var bannerItems = ["", "", "", ""];
 var bannerImage = [
-  "images/labtop.svg.png",
-  "images/clothes.png",
-  "images/home.png",
-  "images/plastic.png"
+  "images/ad1.jpg",
+  "images/ad2.jpg",
+  "images/ad3.jpg",
+  "images/ad4.jpg"
 ];
 
 class Profile extends StatelessWidget {
@@ -104,7 +104,7 @@ class BannerWidgetArea extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(20.0)),
                 child: Image.asset(
                   bannerImage[x],
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               ),
               Container(
@@ -118,6 +118,23 @@ class BannerWidgetArea extends StatelessWidget {
                           Color.fromARGB(90, 177, 152, 152)
                         ])),
               ),
+               Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      bannerItems[x],
+                      style: TextStyle(fontSize: 25.0, color: Colors.white),
+                    ),
+                    Text(
+                      "More than 40% Off",
+                      style: TextStyle(fontSize: 12.0, color: Colors.white),
+                    )
+                  ],
+                ),
+              )
             ],
           ),
         ),

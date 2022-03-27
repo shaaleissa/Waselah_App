@@ -3,6 +3,8 @@ import 'package:application/Screens/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+late String name;
+ late String phoneNumber;
 class AlberRequest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,9 @@ class AlberRequest extends StatelessWidget {
             body: Column(
               children: [
                 CheckBoxList(),
-                //DateAndTime(),
+                DateTimePicker(),
+                FormScreen(),
+                
               ],
             ),
             appBar: AppBar(
@@ -141,20 +145,164 @@ class _DateAndTimeState extends State<DateAndTime> {
         selectedDate = picked;
       });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-         Text("${selectedDate.toLocal()}".split(' ')[0]),
-            SizedBox(height: 20.0,),
-            RaisedButton(
-              onPressed: () => _selectDate(context),
-              child: Text('Select date'),
-            ),
+          Text("${selectedDate.toLocal()}".split(' ')[0]),
+          SizedBox(
+            height: 20.0,
+          ),
+          RaisedButton(
+            onPressed: () => _selectDate(context),
+            child: Text('Select date'),
+          ),
         ],
       ),
+    );
+  }
+}
+
+class DateTimePicker extends StatefulWidget {
+  const DateTimePicker({Key? key}) : super(key: key);
+
+  @override
+  _DateTimePickerState createState() => _DateTimePickerState();
+}
+
+class _DateTimePickerState extends State<DateTimePicker> {
+  late DateTime pickedDate;
+  late TimeOfDay time;
+
+  @override
+  void initState() {
+    super.initState();
+    pickedDate = DateTime.now();
+    time = TimeOfDay.now();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              ListTile(
+                title: Text(
+                    " Date : ${pickedDate.year},${pickedDate.month},${pickedDate.day}"),
+                trailing: const Icon(Icons.keyboard_arrow_down),
+                onTap: _pickDate,
+              ),
+              ListTile(
+                title: Text(" Time : ${time.hour}:${time.minute}"),
+                trailing: const Icon(Icons.keyboard_arrow_down),
+                onTap: _pickTime,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  _pickDate() async {
+    DateTime? date = await showDatePicker(
+      context: context,
+      firstDate: DateTime(DateTime.now().year - 5),
+      lastDate: DateTime(DateTime.now().year + 5),
+      initialDate: pickedDate,
+    );
+    if (date != null) {
+      setState(() {
+        pickedDate = date;
+      });
+    }
+  }
+
+  _pickTime() async {
+    TimeOfDay? t = await showTimePicker(
+      context: context,
+      initialTime: time,
+    );
+    if (t != null) {
+      setState(() {
+        time = t;
+      });
+    }
+  }
+}
+
+class FormScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return FormScreenState();
+  }
+}
+
+class FormScreenState extends State<FormScreen> {
+  
+
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
+
+   
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Form(
+          key: _formkey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextFormField(
+      decoration: InputDecoration(labelText: 'Name'),
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Name is Required';
+        }
+      },
+      onSaved: (value) {
+        name = value!;
+      },
+    ),
+    TextFormField(
+      decoration: InputDecoration(labelText: 'Phone Number'),
+      keyboardType: TextInputType.phone,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Phone Number is Required';
+        }
+      },
+      onSaved: (value) {
+        phoneNumber = value!;
+      },
+    ),
+
+              SizedBox(height: 100),
+              RaisedButton(
+                  child: Text(
+                    'Submit',
+                    style: TextStyle(color: Colors.blue, fontSize: 16),
+                  ),
+                  onPressed: () {
+                    if (!_formkey.currentState!.validate()) {
+                      return;
+                    }
+                    _formkey.currentState!.save();
+                    print(name);
+                    print(phoneNumber);
+                  }),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
