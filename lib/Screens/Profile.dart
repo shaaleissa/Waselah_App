@@ -1,12 +1,8 @@
-import 'dart:ui';
 
 import 'package:application/Screens/UserLogin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
-
-import '../responsive/NavigationBar.dart';
 import '../responsive/LoginController.dart';
 
 var bannerItems = ["", "", "", ""];
@@ -231,3 +227,4 @@ class CounterScreen extends State<CounterScreenState> {
     );
   }
 }
+
