@@ -118,6 +118,7 @@ class BannerWidgetArea extends StatelessWidget {
                           Color.fromARGB(90, 177, 152, 152)
                         ])),
               ),
+
             ],
           ),
         ),
