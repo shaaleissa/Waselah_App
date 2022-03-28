@@ -1,10 +1,24 @@
 import 'package:application/responsive/NavigationBar.dart';
-import 'package:application/Screens/HomePage.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:geocoding/geocoding.dart';
 
 late String name;
- late String phoneNumber;
+late String phoneNumber;
+bool _ElectCheck = false;
+bool _ClothesCheck = false;
+bool _PlasticCheck = false;
+String charName = "Alber";
+DateTime? date;
+late String Street;
+late String Area;
+late String City;
+late String Neighbourhood;
+late String Code;
+
 class AlberRequest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,10 +27,7 @@ class AlberRequest extends StatelessWidget {
         child: Scaffold(
             body: Column(
               children: [
-                CheckBoxList(),
-                DateTimePicker(),
                 FormScreen(),
-                
               ],
             ),
             appBar: AppBar(
@@ -28,13 +39,6 @@ class AlberRequest extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => Home1()));
                   },
                   icon: Icon(Icons.arrow_back)),
-              actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.search),
-                ),
-                IconButton(onPressed: () {}, icon: Icon(Icons.more)),
-              ],
               flexibleSpace: Container(
                 decoration: BoxDecoration(
                     gradient: LinearGradient(colors: [
@@ -48,19 +52,202 @@ class AlberRequest extends StatelessWidget {
   }
 }
 
-class CheckBoxList extends StatefulWidget {
-  const CheckBoxList({Key? key}) : super(key: key);
-
+class FormScreen extends StatefulWidget {
   @override
-  State<CheckBoxList> createState() => _CheckBoxListState();
+  State<StatefulWidget> createState() {
+    return FormScreenState();
+  }
 }
 
-class _CheckBoxListState extends State<CheckBoxList> {
-  bool _checked = false;
-  bool _checked1 = false;
-  bool _checked2 = false;
+class FormScreenState extends State<FormScreen> {
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  late DateTime pickedDate;
+  late TimeOfDay time;
+  late Position currentPosition;
+  @override
+  void initState() {
+    super.initState();
+    pickedDate = DateTime.now();
+    time = TimeOfDay.now();
+  }
+
+  void getCurrentPosition() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+
+    if (permission == LocationPermission.denied ||
+        permission == LocationPermission.deniedForever) {
+      print("Permission not given");
+      LocationPermission asked = await Geolocator.requestPermission();
+    } else {
+      currentPosition = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.best);
+      print(currentPosition.longitude.toString());
+      print(currentPosition.latitude.toString());
+    }
+    List<Placemark> placemarks = await placemarkFromCoordinates(
+        currentPosition.longitude, currentPosition.latitude);
+    print(placemarks);
+    Street = placemarks[0].name!;
+    Area = placemarks[0].administrativeArea!;
+    City = placemarks[0].locality!;
+    Neighbourhood = placemarks[0].subLocality!;
+    Code = placemarks[0].postalCode!;
+  }
+
   @override
   Widget build(BuildContext context) {
+    Timestamp pickUpTime = Timestamp.fromDate(pickedDate);
+    CollectionReference Requests =
+        FirebaseFirestore.instance.collection('Requests');
+    return Column(
+      children: [
+        Form(
+          key: _formkey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CheckBoxs(),
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Name'),
+                onChanged: (value) {
+                  name = value;
+                },
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Name is Required';
+                  }
+                },
+                onSaved: (value) {
+                  name = value!;
+                },
+              ),
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Phone Number'),
+                keyboardType: TextInputType.phone,
+                onChanged: (value) {
+                  phoneNumber = value;
+                },
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Phone Number is Required';
+                  }
+                },
+                onSaved: (value) {
+                  phoneNumber = value!;
+                },
+              ),
+              Column(
+                children: [
+                  SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        ListTile(
+                          title: Text(
+                              " Date : ${pickedDate.year},${pickedDate.month},${pickedDate.day}"),
+                          trailing: const Icon(Icons.keyboard_arrow_down),
+                          onTap: _pickDate,
+                        ),
+                        ListTile(
+                          title: Text(" Time : ${time.hour}:${time.minute}"),
+                          trailing: const Icon(Icons.keyboard_arrow_down),
+                          onTap: _pickTime,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    getCurrentPosition();
+                    final currentSnack =
+                        SnackBar(content: Text('Location Recived'),
+                        action: SnackBarAction(label: 'Done', onPressed: (){}),);
+                         ScaffoldMessenger.of(context).showSnackBar(currentSnack);
+
+                  },
+                  child: Text('Get Current Location'),
+                ),
+              ),
+              SizedBox(height: 100),
+              ElevatedButton.icon(
+                  icon: Icon(Icons.done),
+                  label: Text(
+                    'Submit',
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontSize: 16),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromARGB(255, 139, 143, 173),
+                      onPrimary: Colors.white,
+                      minimumSize: Size(30, 30)),
+                  onPressed: () {
+                    if (!_formkey.currentState!.validate()) {
+                      return;
+                    } else {
+                      _formkey.currentState!.save();
+                    }
+                    Requests.add({
+                      'Charity': charName,
+                      'name': name,
+                      'phone number': phoneNumber,
+                      'TypeElect': _ElectCheck,
+                      'TypeClothes': _ClothesCheck,
+                      'TypePlastic': _PlasticCheck,
+                      'Time': pickUpTime,
+                      'Street': Street,
+                      'Neigh': Neighbourhood,
+                      'City': City,
+                      'Area': Area,
+                      'Zip Code': Code,
+                    }).then((value) => print('Request Recived')).catchError(
+                        (error) => print('Failed to recive request'));
+                    final snackBar = SnackBar(
+                      content: const Text('Request Recived'),
+                      action: SnackBarAction(label: 'Done', onPressed: () {
+                         Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Home1()));
+                      }),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  _pickDate() async {
+    date = await showDatePicker(
+      context: context,
+      firstDate: DateTime(DateTime.now().year - 5),
+      lastDate: DateTime(DateTime.now().year + 5),
+      initialDate: pickedDate,
+    );
+    if (date != null) {
+      setState(() {
+        pickedDate = date!;
+      });
+    }
+  }
+
+  _pickTime() async {
+    TimeOfDay? t = await showTimePicker(
+      context: context,
+      initialTime: time,
+    );
+    if (t != null) {
+      setState(() {
+        time = t;
+      });
+    }
+  }
+
+  Container CheckBoxs() {
     return Container(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -82,10 +269,10 @@ class _CheckBoxListState extends State<CheckBoxList> {
               secondary: FaIcon(FontAwesomeIcons.hatCowboy),
               controlAffinity: ListTileControlAffinity.leading,
               title: Text("Clothes"),
-              value: _checked,
+              value: _ClothesCheck,
               onChanged: (bool? newValue) {
                 setState(() {
-                  _checked = newValue!;
+                  _ClothesCheck = newValue!;
                 });
               },
               activeColor: Color.fromARGB(255, 185, 131, 137),
@@ -95,10 +282,10 @@ class _CheckBoxListState extends State<CheckBoxList> {
               secondary: Icon(Icons.laptop_mac_rounded),
               controlAffinity: ListTileControlAffinity.leading,
               title: Text("Electronics"),
-              value: _checked1,
+              value: _ElectCheck,
               onChanged: (bool? newValue) {
                 setState(() {
-                  _checked1 = newValue!;
+                  _ElectCheck = newValue!;
                 });
               },
               activeColor: Color.fromARGB(255, 185, 131, 137),
@@ -108,10 +295,10 @@ class _CheckBoxListState extends State<CheckBoxList> {
               secondary: FaIcon(FontAwesomeIcons.recycle),
               controlAffinity: ListTileControlAffinity.leading,
               title: Text("Plastic"),
-              value: _checked2,
+              value: _PlasticCheck,
               onChanged: (bool? newValue) {
                 setState(() {
-                  _checked2 = newValue!;
+                  _PlasticCheck = newValue!;
                 });
               },
               activeColor: Color.fromARGB(255, 185, 131, 137),
@@ -120,189 +307,6 @@ class _CheckBoxListState extends State<CheckBoxList> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class DateAndTime extends StatefulWidget {
-  const DateAndTime({Key? key}) : super(key: key);
-
-  @override
-  State<DateAndTime> createState() => _DateAndTimeState();
-}
-
-class _DateAndTimeState extends State<DateAndTime> {
-  DateTime selectedDate = DateTime.now();
-
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate)
-      setState(() {
-        selectedDate = picked;
-      });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text("${selectedDate.toLocal()}".split(' ')[0]),
-          SizedBox(
-            height: 20.0,
-          ),
-          RaisedButton(
-            onPressed: () => _selectDate(context),
-            child: Text('Select date'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class DateTimePicker extends StatefulWidget {
-  const DateTimePicker({Key? key}) : super(key: key);
-
-  @override
-  _DateTimePickerState createState() => _DateTimePickerState();
-}
-
-class _DateTimePickerState extends State<DateTimePicker> {
-  late DateTime pickedDate;
-  late TimeOfDay time;
-
-  @override
-  void initState() {
-    super.initState();
-    pickedDate = DateTime.now();
-    time = TimeOfDay.now();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              ListTile(
-                title: Text(
-                    " Date : ${pickedDate.year},${pickedDate.month},${pickedDate.day}"),
-                trailing: const Icon(Icons.keyboard_arrow_down),
-                onTap: _pickDate,
-              ),
-              ListTile(
-                title: Text(" Time : ${time.hour}:${time.minute}"),
-                trailing: const Icon(Icons.keyboard_arrow_down),
-                onTap: _pickTime,
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  _pickDate() async {
-    DateTime? date = await showDatePicker(
-      context: context,
-      firstDate: DateTime(DateTime.now().year - 5),
-      lastDate: DateTime(DateTime.now().year + 5),
-      initialDate: pickedDate,
-    );
-    if (date != null) {
-      setState(() {
-        pickedDate = date;
-      });
-    }
-  }
-
-  _pickTime() async {
-    TimeOfDay? t = await showTimePicker(
-      context: context,
-      initialTime: time,
-    );
-    if (t != null) {
-      setState(() {
-        time = t;
-      });
-    }
-  }
-}
-
-class FormScreen extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return FormScreenState();
-  }
-}
-
-class FormScreenState extends State<FormScreen> {
-  
-
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-
-
-   
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Form(
-          key: _formkey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextFormField(
-      decoration: InputDecoration(labelText: 'Name'),
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Name is Required';
-        }
-      },
-      onSaved: (value) {
-        name = value!;
-      },
-    ),
-    TextFormField(
-      decoration: InputDecoration(labelText: 'Phone Number'),
-      keyboardType: TextInputType.phone,
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Phone Number is Required';
-        }
-      },
-      onSaved: (value) {
-        phoneNumber = value!;
-      },
-    ),
-
-              SizedBox(height: 100),
-              RaisedButton(
-                  child: Text(
-                    'Submit',
-                    style: TextStyle(color: Colors.blue, fontSize: 16),
-                  ),
-                  onPressed: () {
-                    if (!_formkey.currentState!.validate()) {
-                      return;
-                    }
-                    _formkey.currentState!.save();
-                    print(name);
-                    print(phoneNumber);
-                  }),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }

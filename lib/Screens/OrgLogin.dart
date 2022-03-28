@@ -15,16 +15,7 @@ class OrgLogin extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [
-          Provider<AuthOrg>(
-            create: (_) => AuthOrg(FirebaseAuth.instance),
-          ),
-          StreamProvider(
-              create: (context) => context.read<AuthOrg>().authStateChanges,
-              initialData: null)
-        ],
-        child: DefaultTabController(
+    return DefaultTabController(
             length: 4,
             child: Scaffold(
                 body: Container(
@@ -76,7 +67,7 @@ class OrgLogin extends StatelessWidget {
                   ),
                   elevation: 20.0,
                   titleSpacing: 20,
-                ))));
+                )));
   }
 }
 
@@ -86,6 +77,7 @@ class AuthWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final firebaseuser = context.watch<User>();
+    // ignore: unnecessary_null_comparison
     if (firebaseuser != null) {
       return OrgHome();
     } else {
@@ -142,10 +134,8 @@ class Button extends StatelessWidget {
         context
             .read<AuthOrg>()
             .signIn(email: IDContoller.text, pass: PassContoller.text);
-            Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => OrgHome()));
+           Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => OrgHome()));
       },
       child: Padding(
         padding: EdgeInsets.all(15.0),
@@ -190,6 +180,7 @@ class LoginTextFields extends StatelessWidget {
                 hintText: "Enter your password",
                 hintStyle: TextStyle(color: Colors.grey),
                 border: InputBorder.none),
+                obscureText: true,
           ),
         ),
       ],

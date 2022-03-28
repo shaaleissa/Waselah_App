@@ -33,22 +33,7 @@ class InputWrapper extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ),
-        // this below code will be removed it's just so you guys can enter the homepage incase of any errors with ggogle sign in
-        SizedBox(
-          width: 50,
-          height: 50,
-        ),
-        Center(
-          child: RaisedButton(
-              onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home1()));
-              },
-              child: Text(
-                "Continue to homepage",
-              )),
-        ),
-        // up utill here
+       
         SizedBox(
           width: 50,
           height: 50,

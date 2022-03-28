@@ -9,8 +9,21 @@ import 'package:provider/provider.dart';
 
 import '../responsive/NavigationBar.dart';
 import '../responsive/LoginController.dart';
+import 'HomePage.dart';
 
-var bannerItems = ["", "", "", ""];
+var bannerItems = ["Alataa charity ", "Qatif charity", "Saihat charity", "Ertiqaa charity"];
+var bannerDes = [
+                      "To support the sustainable environment, recycle batteries of all kinds. We receive batteries at the Smart Consumption Foundation 4:30 pm to 8:30 pm Al Quds Street (opposite Riyad Bank) 0533939200",
+      
+                 
+                      "Al Qatif Charity Project Utilizing Surplus Clothes for Home Receipt. Call 0534279839 Transport Contractor Muhammad Salem Al Rashidi Foundation for Commercial Services",
+                      
+                    
+                      "We receive used clothes and paper in the containers located opposite the women's center north of Saihat Public Park",
+                    
+                      "Upgrading Your Computer Don’t Throw 2 ertiqa initiative for “Green Saudi Arabia” We are working on rehabilitating computers used to protect the environment The reception continues for two days: First day: 01/25/2022 The second day  01/02/2022 from 10:00 am to 12:00 pm according to the following locations: Male Students Building (A11) Female Students Building (650) Contact and inquiries: 0133332005",
+                     
+                   ];
 var bannerImage = [
   "images/ad1.jpg",
   "images/ad2.jpg",
@@ -32,7 +45,6 @@ class Profile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // here u can add
                 Header(),
                     Counter(),
                     SizedBox(
@@ -58,6 +70,7 @@ class Profile extends StatelessWidget {
       appBar: AppBar(
         title: Text("WASELAH"),
         centerTitle: true,
+        automaticallyImplyLeading: false,
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
@@ -126,20 +139,34 @@ class BannerWidgetArea extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       bannerItems[x],
-                      style: TextStyle(fontSize: 25.0, color: Colors.white),
+                      style: TextStyle(fontSize: 20.0, color: Colors.white,
+                      backgroundColor: Color.fromARGB(96, 158, 158, 158)),
                     ),
-                    Text(
-                      "More than 40% Off",
-                      style: TextStyle(fontSize: 12.0, color: Colors.white),
-                    )
+                        ExpansionTile(title: Text("Desciption", style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                      backgroundColor: Colors.white
+                        ),),
+               children:[
+                   Text(
+                      bannerDes[x],
+                      style: TextStyle(fontSize: 10.0, color: Color.fromARGB(255, 0, 0, 0),
+                      backgroundColor: Colors.white),
+                    ),
+
+               ]
+               ),
                   ],
                 ),
               )
+           
             ],
           ),
         ),
+        
       );
       banners.add(bannerView);
+    }
+    for (int x = 0; x < bannerItems.length; x++) {
     }
 
     return Container(
@@ -225,7 +252,7 @@ class Counter extends StatefulWidget {
 }
 
 class _CounterState extends State<Counter> {
-    int _count = 0;
+    static int _count = 0;
     void _incrementCount() {
       setState(() {
         _count = _count + 1;

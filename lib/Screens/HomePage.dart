@@ -8,6 +8,7 @@ import 'ErtqaRequest.dart';
 import 'JoodRequest.dart';
 import 'QatifRequest.dart';
 import 'SihatRequest.dart';
+import '../responsive/NavigationBar.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -15,6 +16,7 @@ class HomePage extends StatelessWidget {
     return DefaultTabController(
         length: 4,
         child: Scaffold(
+
             body: TabBarView(children: [
               AllMenu(context),
               ElectMenu(context),

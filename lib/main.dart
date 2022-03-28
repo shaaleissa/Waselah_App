@@ -1,5 +1,7 @@
 
 import 'package:application/Screens/WelcomePage.dart';
+import 'package:application/responsive/AuthenticationOrg.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
@@ -19,13 +21,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return  GetMaterialApp(
+    return  MultiProvider(providers: [
+      Provider<AuthOrg>(create: (_) => AuthOrg(FirebaseAuth.instance)),
+       StreamProvider(create: (context) => context.read<AuthOrg>().authStateChanges,
+        initialData: null)
+    ],
+    child: GetMaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
           home: WelcomePage(),
-        );
+     ), );
   }
 }
 

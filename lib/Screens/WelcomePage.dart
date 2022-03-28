@@ -433,7 +433,7 @@ class WelcomePage extends StatelessWidget {
               'Individual ',
               style: TextStyle(
                 fontFamily: 'PT Sans',
-                fontSize: 25,
+                fontSize: 22,
                 color: const Color(0xffffffff),
                 fontWeight: FontWeight.w700,
                 shadows: [
@@ -454,7 +454,7 @@ class WelcomePage extends StatelessWidget {
               'Organization',
               style: TextStyle(
                 fontFamily: 'PT Sans',
-                fontSize: 25,
+                fontSize: 21,
                 color: const Color(0xffffffff),
                 fontWeight: FontWeight.w700,
                 shadows: [
@@ -477,7 +477,7 @@ class WelcomePage extends StatelessWidget {
                 'Welcome to \nWaselah',
                 style: TextStyle(
                   fontFamily: 'SF Pro Rounded',
-                  fontSize: 45,
+                  fontSize: 41,
                   color: const Color(0xff54494b),
                   fontWeight: FontWeight.w800,
                   shadows: [
@@ -505,14 +505,6 @@ class WelcomePage extends StatelessWidget {
               ),
             ),
           ),
-          Center(
-      child: RaisedButton(
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => UserLogin()));
-          },
-          child: Text("Continue to homepage")),
-    )
         ],
       ),
     );
