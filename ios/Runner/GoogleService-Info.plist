@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>839371930197-igndj9ges6a8e28knh9obmj3j5jpa664.apps.googleusercontent.com</string>
+	<string>839371930197-tqcg5h4fsc5ohl5mtlugvv4kjk6mih2j.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.839371930197-igndj9ges6a8e28knh9obmj3j5jpa664</string>
+	<string>com.googleusercontent.apps.839371930197-tqcg5h4fsc5ohl5mtlugvv4kjk6mih2j</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAuecMPCt5N3esFAvowP6lJ86SW7WCkKyU</string>
+	<string>AIzaSyAOvYOF-akxcKcYHAPONu5tCTDpfYRL3LI</string>
 	<key>GCM_SENDER_ID</key>
 	<string>839371930197</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.application</string>
+	<string>com.waselah.application</string>
 	<key>PROJECT_ID</key>
 	<string>waselah-app</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:839371930197:ios:6705c994717fe4e1cff2dc</string>
+	<string>1:839371930197:ios:9e2386173bb69ce0cff2dc</string>
+	<key>DATABASE_URL</key>
+	<string>https://waselah-app-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
