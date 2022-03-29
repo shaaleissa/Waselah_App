@@ -263,7 +263,7 @@ class HomePage extends StatelessWidget {
             textAlign: TextAlign.center),
         childrenPadding: EdgeInsets.all(16),
         children: [
-          Text(" About Sihat : "),
+          Text(" About Sihat :  founded in eastern region. It aims to help people in need hand in hand with the different social classes in the community."),
           Text("Location : Eastren Province"),
           Text("Services :"),
           Center(
@@ -296,7 +296,7 @@ class HomePage extends StatelessWidget {
             textAlign: TextAlign.center),
         childrenPadding: EdgeInsets.all(16),
         children: [
-          Text(" About Ata'a :"),
+          Text(" About Ata'a :A non profit female organization that aims to advance development in the community."),
           Text("Location : Eastren Province"),
           Text("Services :"),
           Center(
@@ -330,7 +330,7 @@ class HomePage extends StatelessWidget {
             textAlign: TextAlign.center),
         childrenPadding: EdgeInsets.all(16),
         children: [
-          Text(" About Qatif :"),
+          Text(" About Qatif : aims to develop the economic and social level through several programs, including donations in the Eastern Province"),
           Text("Location : Eastren Province"),
           Text("Services :"),
           Center(

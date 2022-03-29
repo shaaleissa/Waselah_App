@@ -21,10 +21,14 @@ late String Code;
 
 class JoodRequest extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+   Widget build(BuildContext context) {
     return DefaultTabController(
         length: 4,
-        child: Scaffold(
+        child: GestureDetector(
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: Scaffold(
             body: Column(
               children: [
                 FormScreen(),
@@ -48,7 +52,10 @@ class JoodRequest extends StatelessWidget {
               ),
               elevation: 20.0,
               titleSpacing: 20,
-            )));
+            ),
+            resizeToAvoidBottomInset: false,
+          ),
+        ));
   }
 }
 
@@ -160,6 +167,10 @@ class FormScreenState extends State<FormScreen> {
               ),
               Center(
                 child: ElevatedButton(
+                   style: ElevatedButton.styleFrom(
+                      primary: Color.fromARGB(255, 139, 143, 173),
+                      onPrimary: Colors.white,
+                      minimumSize: Size(30, 30)),
                   onPressed: () {
                     getCurrentPosition();
                     final currentSnack =

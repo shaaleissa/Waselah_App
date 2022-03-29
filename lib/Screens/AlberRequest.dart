@@ -24,7 +24,11 @@ class AlberRequest extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
         length: 4,
-        child: Scaffold(
+        child: GestureDetector(
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: Scaffold(
             body: Column(
               children: [
                 FormScreen(),
@@ -48,7 +52,10 @@ class AlberRequest extends StatelessWidget {
               ),
               elevation: 20.0,
               titleSpacing: 20,
-            )));
+            ),
+            resizeToAvoidBottomInset: false,
+          ),
+        ));
   }
 }
 
@@ -160,13 +167,17 @@ class FormScreenState extends State<FormScreen> {
               ),
               Center(
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromARGB(255, 139, 143, 173),
+                      onPrimary: Colors.white,
+                      minimumSize: Size(30, 30)),
                   onPressed: () {
                     getCurrentPosition();
-                    final currentSnack =
-                        SnackBar(content: Text('Location Recived'),
-                        action: SnackBarAction(label: 'Done', onPressed: (){}),);
-                         ScaffoldMessenger.of(context).showSnackBar(currentSnack);
-
+                    final currentSnack = SnackBar(
+                      content: Text('Location Recived'),
+                      action: SnackBarAction(label: 'Done', onPressed: () {}),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(currentSnack);
                   },
                   child: Text('Get Current Location'),
                 ),
@@ -207,10 +218,14 @@ class FormScreenState extends State<FormScreen> {
                         (error) => print('Failed to recive request'));
                     final snackBar = SnackBar(
                       content: const Text('Request Recived'),
-                      action: SnackBarAction(label: 'Done', onPressed: () {
-                         Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Home1()));
-                      }),
+                      action: SnackBarAction(
+                          label: 'Done',
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Home1()));
+                          }),
                     );
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }),

@@ -17,7 +17,12 @@ class OrgLogin extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
             length: 4,
-            child: Scaffold(
+            child: GestureDetector(
+              onTap: () {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
+
+             child: Scaffold(
                 body: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -67,7 +72,7 @@ class OrgLogin extends StatelessWidget {
                   ),
                   elevation: 20.0,
                   titleSpacing: 20,
-                )));
+                ))));
   }
 }
 

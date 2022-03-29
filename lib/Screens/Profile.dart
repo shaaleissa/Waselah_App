@@ -11,19 +11,18 @@ import '../responsive/NavigationBar.dart';
 import '../responsive/LoginController.dart';
 import 'HomePage.dart';
 
-var bannerItems = ["Alataa charity ", "Qatif charity", "Saihat charity", "Ertiqaa charity"];
+var bannerItems = [
+  "Alataa charity ",
+  "Qatif charity",
+  "Saihat charity",
+  "Ertiqaa charity"
+];
 var bannerDes = [
-                      "To support the sustainable environment, recycle batteries of all kinds. We receive batteries at the Smart Consumption Foundation 4:30 pm to 8:30 pm Al Quds Street (opposite Riyad Bank) 0533939200",
-      
-                 
-                      "Al Qatif Charity Project Utilizing Surplus Clothes for Home Receipt. Call 0534279839 Transport Contractor Muhammad Salem Al Rashidi Foundation for Commercial Services",
-                      
-                    
-                      "We receive used clothes and paper in the containers located opposite the women's center north of Saihat Public Park",
-                    
-                      "Upgrading Your Computer Don’t Throw 2 ertiqa initiative for “Green Saudi Arabia” We are working on rehabilitating computers used to protect the environment The reception continues for two days: First day: 01/25/2022 The second day  01/02/2022 from 10:00 am to 12:00 pm according to the following locations: Male Students Building (A11) Female Students Building (650) Contact and inquiries: 0133332005",
-                     
-                   ];
+  "To support the sustainable environment, recycle batteries of all kinds. We receive batteries at the Smart Consumption Foundation 4:30 pm to 8:30 pm Al Quds Street (opposite Riyad Bank) 0533939200",
+  "Al Qatif Charity Project Utilizing Surplus Clothes for Home Receipt. Call 0534279839 Transport Contractor Muhammad Salem Al Rashidi Foundation for Commercial Services",
+  "We receive used clothes and paper in the containers located opposite the women's center north of Saihat Public Park",
+  "Upgrading Your Computer Don’t Throw 2 ertiqa initiative for “Green Saudi Arabia” We are working on rehabilitating computers used to protect the environment The reception continues for two days: First day: 01/25/2022 The second day  01/02/2022 from 10:00 am to 12:00 pm according to the following locations: Male Students Building (A11) Female Students Building (650) Contact and inquiries: 0133332005",
+];
 var bannerImage = [
   "images/ad1.jpg",
   "images/ad2.jpg",
@@ -46,24 +45,25 @@ class Profile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Header(),
-                    Counter(),
-                    SizedBox(
-                      width: 40,
-                      height: 40,
-                    ),
-                    BannerWidgetArea(),
-                     Padding(
-                       padding: const EdgeInsets.fromLTRB(8, 60, 8, 40),
-                       child: Text(" \" We make a living by what we get, but we make a life by what we give \" ",
+                Counter(),
+                SizedBox(
+                  width: 40,
+                  height: 40,
+                ),
+                BannerWidgetArea(),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 60, 8, 40),
+                  child: Text(
+                    " \" We make a living by what we get, but we make a life by what we give \" ",
                     style: TextStyle(
                       color: const Color(0xff666a86),
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.italic,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic,
                     ),
                     textAlign: TextAlign.center,
-                    ),
-                     ),
+                  ),
+                ),
               ],
             ),
           ))),
@@ -131,7 +131,7 @@ class BannerWidgetArea extends StatelessWidget {
                           Color.fromARGB(90, 177, 152, 152)
                         ])),
               ),
-               Padding(
+              Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -139,35 +139,37 @@ class BannerWidgetArea extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       bannerItems[x],
-                      style: TextStyle(fontSize: 20.0, color: Colors.white,
-                      backgroundColor: Color.fromARGB(96, 158, 158, 158)),
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                          backgroundColor: Color.fromARGB(96, 158, 158, 158)),
                     ),
-                        ExpansionTile(title: Text("Desciption", style: TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0),
-                      backgroundColor: Colors.white
-                        ),),
-               children:[
-                   Text(
-                      bannerDes[x],
-                      style: TextStyle(fontSize: 10.0, color: Color.fromARGB(255, 0, 0, 0),
-                      backgroundColor: Colors.white),
-                    ),
-
-               ]
-               ),
+                    ExpansionTile(
+                        title: Text(
+                          "Desciption",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              backgroundColor: Colors.white),
+                        ),
+                        children: [
+                          Text(
+                            bannerDes[x],
+                            style: TextStyle(
+                                fontSize: 10.0,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                backgroundColor: Colors.white),
+                          ),
+                        ]),
                   ],
                 ),
               )
-           
             ],
           ),
         ),
-        
       );
       banners.add(bannerView);
     }
-    for (int x = 0; x < bannerItems.length; x++) {
-    }
+    for (int x = 0; x < bannerItems.length; x++) {}
 
     return Container(
       width: screenWidth,
@@ -182,7 +184,7 @@ class BannerWidgetArea extends StatelessWidget {
 }
 
 class Header extends StatefulWidget {
-  const Header({ Key? key }) : super(key: key);
+  const Header({Key? key}) : super(key: key);
 
   @override
   State<Header> createState() => _HeaderState();
@@ -194,13 +196,12 @@ class _HeaderState extends State<Header> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-  
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          color:  const Color(0xff666a86),
+          color: const Color(0xff666a86),
           height: 120,
           width: screenWidth,
           child: Padding(
@@ -245,67 +246,74 @@ class _HeaderState extends State<Header> {
 }
 
 class Counter extends StatefulWidget {
-  const Counter({ Key? key }) : super(key: key);
+  const Counter({Key? key}) : super(key: key);
 
   @override
   State<Counter> createState() => _CounterState();
 }
 
 class _CounterState extends State<Counter> {
-    static int _count = 0;
-    void _incrementCount() {
-      setState(() {
-        _count = _count + 1;
-      });
-    }
+  static int _count = 0;
+  void _incrementCount() {
+    setState(() {
+      _count = _count + 1;
+    });
+  }
 
-    void _decrementCount() {
-      setState(() {
+  void _decrementCount() {
+    setState(() {
+      if (_count <= 0)
+      _count = 0;
+      else
         _count = _count - 1;
-      });
-    }
+        
+    });
+  }
 
-    void _resetCount() {
-      setState(() {
-        _count = 0;
-      });
-    }
+  void _resetCount() {
+    setState(() {
+      _count = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(15),
       child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'Your Goals:',
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          const Text(
+            'Your Goals:',
+          ),
+          Text(
+            '$_count',
+            style: Theme.of(context).textTheme.headline4,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              FloatingActionButton(
+                backgroundColor: Color.fromARGB(255, 185, 131, 137),
+                onPressed: _incrementCount,
+                tooltip: 'Increment',
+                child: const FaIcon(FontAwesomeIcons.plus),
               ),
-              Text(
-                '$_count',
-                style: Theme.of(context).textTheme.headline4,
+              FloatingActionButton(
+                backgroundColor: Color.fromARGB(255, 185, 131, 137),
+                onPressed: _decrementCount,
+                tooltip: 'Decrement',
+                child: const FaIcon(FontAwesomeIcons.minus),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  FloatingActionButton(
-                     backgroundColor:Color.fromARGB(255, 185, 131, 137) ,
-                    onPressed: _incrementCount,
-          tooltip: 'Increment',
-          child: const FaIcon(FontAwesomeIcons.plus),),
-          FloatingActionButton(
-             backgroundColor: Color.fromARGB(255, 185, 131, 137),
-                    onPressed: _decrementCount,
-          tooltip: 'Decrement',
-          child: const FaIcon(FontAwesomeIcons.minus),),
-          FloatingActionButton(
-            backgroundColor:Color.fromARGB(255, 185, 131, 137) ,
-                    onPressed: _resetCount,
-          tooltip: 'Reset',
-          child: const Icon(Icons.refresh_sharp),)
-                ],
+              FloatingActionButton(
+                backgroundColor: Color.fromARGB(255, 185, 131, 137),
+                onPressed: _resetCount,
+                tooltip: 'Reset',
+                child: const Icon(Icons.refresh_sharp),
               )
             ],
-          
+          )
+        ],
       ),
     );
   }

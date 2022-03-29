@@ -160,6 +160,10 @@ class FormScreenState extends State<FormScreen> {
               ),
               Center(
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromARGB(255, 139, 143, 173),
+                      onPrimary: Colors.white,
+                      minimumSize: Size(30, 30)),
                   onPressed: () {
                     getCurrentPosition();
                     final currentSnack =

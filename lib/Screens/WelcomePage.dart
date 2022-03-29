@@ -364,76 +364,23 @@ class WelcomePage extends StatelessWidget {
               ],
             ),
           ),
+
           Pinned.fromPins(
-            Pin(size: 166.0, start: 28.0),
-            Pin(size: 37.0, middle: 0.5739),
-            child: PageLink(
-              links: [
-                PageLinkInfo(
-                  transition: LinkTransition.Fade,
-                  ease: Curves.easeOut,
-                  duration: 0.3,
-                  pageBuilder: () => OrgLogin(),
-                ),
-              ],
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xff54494b),
-                      borderRadius: BorderRadius.circular(27.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0x29000000),
-                          offset: Offset(0, 3),
-                          blurRadius: 6,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Pinned.fromPins(
-            Pin(size: 166.0, end: 21.0),
-            Pin(size: 37.0, middle: 0.5739),
-            child: PageLink(
-              links: [
-                PageLinkInfo(
-                  transition: LinkTransition.Fade,
-                  ease: Curves.easeOut,
-                  duration: 0.3,
-                  pageBuilder: () => UserLogin(),
-                ),
-              ],
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xff54494b),
-                      borderRadius: BorderRadius.circular(27.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0x29000000),
-                          offset: Offset(0, 3),
-                          blurRadius: 6,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Pinned.fromPins(
-            Pin(size: 113.0, end: 47.0),
-            Pin(size: 29.0, middle: 0.5732),
-            child: Text(
+            Pin(size: 140.0, end: 42.0),
+            Pin(size: 40.0, middle: 0.5732),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                      primary: const Color(0xff54494b),
+                      minimumSize: Size(60,60)),
+              onPressed: (){
+                 Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => UserLogin()));
+              }, 
+              child: Text(
               'Individual ',
               style: TextStyle(
                 fontFamily: 'PT Sans',
-                fontSize: 22,
+                fontSize: 20,
                 color: const Color(0xffffffff),
                 fontWeight: FontWeight.w700,
                 shadows: [
@@ -445,16 +392,20 @@ class WelcomePage extends StatelessWidget {
                 ],
               ),
               softWrap: false,
-            ),
+            ),)
           ),
           Pinned.fromPins(
-            Pin(size: 138.0, start: 42.0),
-            Pin(size: 29.0, middle: 0.5732),
-            child: Text(
+            Pin(size: 140.0, start: 42.0),
+            Pin(size: 40.0, middle: 0.5732),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                      primary: const Color(0xff54494b),
+                      minimumSize: Size(60,60)),
+              child:Text(
               'Organization',
               style: TextStyle(
                 fontFamily: 'PT Sans',
-                fontSize: 21,
+                fontSize: 16.5,
                 color: const Color(0xffffffff),
                 fontWeight: FontWeight.w700,
                 shadows: [
@@ -466,7 +417,12 @@ class WelcomePage extends StatelessWidget {
                 ],
               ),
               softWrap: false,
-            ),
+            ), 
+            onPressed: (){
+               Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => OrgLogin()));
+
+            },)
           ),
           Align(
             alignment: Alignment(0.0, -0.137),
