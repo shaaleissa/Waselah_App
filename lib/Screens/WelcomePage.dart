@@ -402,10 +402,10 @@ class WelcomePage extends StatelessWidget {
                       primary: const Color(0xff54494b),
                       minimumSize: Size(60,60)),
               child:Text(
-              'Organization',
+              'Delivary',
               style: TextStyle(
                 fontFamily: 'PT Sans',
-                fontSize: 16.5,
+                fontSize: 20,
                 color: const Color(0xffffffff),
                 fontWeight: FontWeight.w700,
                 shadows: [
