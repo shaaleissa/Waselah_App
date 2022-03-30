@@ -72,7 +72,10 @@ class OrgLogin extends StatelessWidget {
                   ),
                   elevation: 20.0,
                   titleSpacing: 20,
-                ))));
+                ),
+                resizeToAvoidBottomInset: false,
+                )
+                ));
   }
 }
 

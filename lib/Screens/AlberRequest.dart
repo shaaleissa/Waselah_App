@@ -238,11 +238,24 @@ class FormScreenState extends State<FormScreen> {
 
   _pickDate() async {
     date = await showDatePicker(
-      context: context,
-      firstDate: DateTime(DateTime.now().year - 5),
-      lastDate: DateTime(DateTime.now().year + 5),
-      initialDate: pickedDate,
-    );
+        context: context,
+        firstDate: DateTime(DateTime.now().year - 5),
+        lastDate: DateTime(DateTime.now().year + 5),
+        initialDate: pickedDate,
+        builder: (context, child) {
+          return Theme(
+              data: Theme.of(context).copyWith(
+                colorScheme: ColorScheme.light(
+                  primary: Color.fromARGB(255, 185, 131, 137),
+                  onPrimary: Colors.white,
+                  onSurface: Colors.black,
+                ),
+                textButtonTheme: TextButtonThemeData(
+                    style:
+                        TextButton.styleFrom(primary: const Color(0xff666a86))),
+              ),
+              child: child!);
+        });
     if (date != null) {
       setState(() {
         pickedDate = date!;
@@ -254,6 +267,21 @@ class FormScreenState extends State<FormScreen> {
     TimeOfDay? t = await showTimePicker(
       context: context,
       initialTime: time,
+       builder: (context, child) {
+          return Theme(
+              data: Theme.of(context).copyWith(
+                colorScheme: ColorScheme.light(
+                  primary: Color.fromARGB(255, 185, 131, 137),
+                  onPrimary: Colors.white,
+                  onSurface: Colors.black,
+                ),
+                textButtonTheme: TextButtonThemeData(
+                    style:
+                        TextButton.styleFrom(primary: const Color(0xff666a86))),
+              ),
+              child: child!);
+        }
+      
     );
     if (t != null) {
       setState(() {
