@@ -9,6 +9,7 @@ import 'JoodRequest.dart';
 import 'QatifRequest.dart';
 import 'SihatRequest.dart';
 import '../responsive/NavigationBar.dart';
+import 'TarotRequest.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -16,7 +17,6 @@ class HomePage extends StatelessWidget {
     return DefaultTabController(
         length: 4,
         child: Scaffold(
-
             body: TabBarView(children: [
               AllMenu(context),
               ElectMenu(context),
@@ -27,14 +27,6 @@ class HomePage extends StatelessWidget {
             appBar: AppBar(
               title: Text("WASELAH"),
               centerTitle: true,
-              actions: [
-                IconButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => UserLogin()));
-                    },
-                    icon: Icon(Icons.arrow_back)),
-              ],
               bottom: TabBar(tabs: [
                 Tab(
                   icon: Icon(Icons.home),
@@ -84,6 +76,8 @@ class HomePage extends StatelessWidget {
               ),
               QatifImage(),
               QatifText(context),
+              TarotImage(),
+              TarotText(context),
             ],
           )),
     );
@@ -137,7 +131,8 @@ class HomePage extends StatelessWidget {
               JoodText(context),
               SihatImage(),
               SihatText(
-                context,),
+                context,
+              ),
               AttaImage(),
               AttaText(context),
             ],
@@ -166,15 +161,15 @@ class HomePage extends StatelessWidget {
           Text("Services : "),
           Center(
             child: ElevatedButton.icon(
-               style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 139, 143, 173),
-            onPrimary: Colors.white,
-            minimumSize: Size(30, 30)),
+                style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 139, 143, 173),
+                    onPrimary: Colors.white,
+                    minimumSize: Size(30, 30)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => AlberRequest()));
                 },
-                icon:Icon(Icons.request_page),
+                icon: Icon(Icons.request_page),
                 label: Text("Request Pick Up")),
           ),
         ],
@@ -200,17 +195,16 @@ class HomePage extends StatelessWidget {
           Text("Services : "),
           Center(
             child: ElevatedButton.icon(
-               style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 139, 143, 173),
-            onPrimary: Colors.white,
-            minimumSize: Size(30, 30)),
+                style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 139, 143, 173),
+                    onPrimary: Colors.white,
+                    minimumSize: Size(30, 30)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => JoodRequest()));
                 },
-                icon:Icon(Icons.request_page),
+                icon: Icon(Icons.request_page),
                 label: Text("Request Pick Up")),
-               
           ),
         ],
       );
@@ -235,10 +229,10 @@ class HomePage extends StatelessWidget {
           Text("Services :"),
           Center(
             child: ElevatedButton.icon(
-               style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 139, 143, 173),
-            onPrimary: Colors.white,
-            minimumSize: Size(30, 30)),
+                style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 139, 143, 173),
+                    onPrimary: Colors.white,
+                    minimumSize: Size(30, 30)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => EtrqaRequest()));
@@ -263,20 +257,21 @@ class HomePage extends StatelessWidget {
             textAlign: TextAlign.center),
         childrenPadding: EdgeInsets.all(16),
         children: [
-          Text(" About Sihat :  founded in eastern region. It aims to help people in need hand in hand with the different social classes in the community."),
+          Text(
+              " About Sihat :  founded in eastern region. It aims to help people in need hand in hand with the different social classes in the community."),
           Text("Location : Eastren Province"),
           Text("Services :"),
           Center(
             child: ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 139, 143, 173),
-            onPrimary: Colors.white,
-            minimumSize: Size(30, 30)),
+                    primary: Color.fromARGB(255, 139, 143, 173),
+                    onPrimary: Colors.white,
+                    minimumSize: Size(30, 30)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => SihatRequest()));
                 },
-                icon:Icon(Icons.request_page),
+                icon: Icon(Icons.request_page),
                 label: Text("Request Pick Up")),
           ),
         ],
@@ -296,15 +291,16 @@ class HomePage extends StatelessWidget {
             textAlign: TextAlign.center),
         childrenPadding: EdgeInsets.all(16),
         children: [
-          Text(" About Ata'a :A non profit female organization that aims to advance development in the community."),
+          Text(
+              " About Ata'a :A non profit female organization that aims to advance development in the community."),
           Text("Location : Eastren Province"),
           Text("Services :"),
           Center(
             child: ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 139, 143, 173),
-            onPrimary: Colors.white,
-            minimumSize: Size(30, 30)),
+                style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 139, 143, 173),
+                    onPrimary: Colors.white,
+                    minimumSize: Size(30, 30)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => AttaRequest()));
@@ -330,20 +326,56 @@ class HomePage extends StatelessWidget {
             textAlign: TextAlign.center),
         childrenPadding: EdgeInsets.all(16),
         children: [
-          Text(" About Qatif : aims to develop the economic and social level through several programs, including donations in the Eastern Province"),
+          Text(
+              " About Qatif : aims to develop the economic and social level through several programs, including donations in the Eastern Province"),
           Text("Location : Eastren Province"),
           Text("Services :"),
           Center(
             child: ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 139, 143, 173),
-            onPrimary: Colors.white,
-            minimumSize: Size(30, 30)),
+                style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 139, 143, 173),
+                    onPrimary: Colors.white,
+                    minimumSize: Size(30, 30)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => QatifRequest()));
                 },
-                icon:Icon(Icons.request_page),
+                icon: Icon(Icons.request_page),
+                label: Text("Request Pick Up")),
+          ),
+        ],
+      );
+
+  Widget TarotImage() => Image.asset(
+        "images/tarot.png",
+        width: double.infinity,
+        height: 200,
+        fit: BoxFit.scaleDown,
+      );
+  Widget TarotText(BuildContext context) => ExpansionTile(
+        title: Text("Tarot Charity ",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center),
+        childrenPadding: EdgeInsets.all(16),
+        children: [
+          Text(
+              " About Tarot : aims to develop the economic and social level through providing financial and material aid, and rising the awareness of the importance of donations in the eastren province  "),
+          Text("Location : Eastren Province"),
+          Text("Services :"),
+          Center(
+            child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 139, 143, 173),
+                    onPrimary: Colors.white,
+                    minimumSize: Size(30, 30)),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => TarotRequest()));
+                },
+                icon: Icon(Icons.request_page),
                 label: Text("Request Pick Up")),
           ),
         ],
