@@ -71,6 +71,7 @@ class FormScreenState extends State<FormScreen> {
   late DateTime pickedDate;
   late TimeOfDay time;
   late Position currentPosition;
+  var locationmessage = '';
   @override
   void initState() {
     super.initState();
@@ -99,8 +100,11 @@ class FormScreenState extends State<FormScreen> {
     City = placemarks[0].locality!;
     Neighbourhood = placemarks[0].subLocality!;
     Code = placemarks[0].postalCode!;
-  }
 
+    setState(() {
+      locationmessage = Neighbourhood + ', ' + City + ', ' + Area;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     Timestamp pickUpTime = Timestamp.fromDate(pickedDate);

@@ -347,7 +347,7 @@ class HomePage extends StatelessWidget {
       );
 
   Widget TarotImage() => Image.asset(
-        "images/tarot.png",
+        "images/Tarot.png",
         width: double.infinity,
         height: 200,
         fit: BoxFit.scaleDown,

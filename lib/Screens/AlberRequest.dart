@@ -13,11 +13,11 @@ bool _ClothesCheck = false;
 bool _PlasticCheck = false;
 String charName = "Alber";
 DateTime? date;
-late String Street;
-late String Area;
-late String City;
-late String Neighbourhood;
-late String Code;
+late String Street = "";
+late String Area = "";
+late String City = "";
+late String Neighbourhood = "";
+late String Code = "";
 
 class AlberRequest extends StatelessWidget {
   @override
@@ -71,6 +71,7 @@ class FormScreenState extends State<FormScreen> {
   late DateTime pickedDate;
   late TimeOfDay time;
   late Position currentPosition;
+  var locationmessage = '';
   @override
   void initState() {
     super.initState();
@@ -99,6 +100,10 @@ class FormScreenState extends State<FormScreen> {
     City = placemarks[0].locality!;
     Neighbourhood = placemarks[0].subLocality!;
     Code = placemarks[0].postalCode!;
+
+    setState(() {
+      locationmessage = Neighbourhood + ', ' + City + ', ' + Area;
+    });
   }
 
   @override
@@ -173,6 +178,7 @@ class FormScreenState extends State<FormScreen> {
                       minimumSize: Size(30, 30)),
                   onPressed: () {
                     getCurrentPosition();
+
                     final currentSnack = SnackBar(
                       content: Text('Location Recived'),
                       action: SnackBarAction(label: 'Done', onPressed: () {}),
@@ -182,7 +188,11 @@ class FormScreenState extends State<FormScreen> {
                   child: Text('Get Current Location'),
                 ),
               ),
-              SizedBox(height: 100),
+              Text(locationmessage, style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold
+              ),),
+              SizedBox(height: 30),
               ElevatedButton.icon(
                   icon: Icon(Icons.done),
                   label: Text(
@@ -265,9 +275,9 @@ class FormScreenState extends State<FormScreen> {
 
   _pickTime() async {
     TimeOfDay? t = await showTimePicker(
-      context: context,
-      initialTime: time,
-       builder: (context, child) {
+        context: context,
+        initialTime: time,
+        builder: (context, child) {
           return Theme(
               data: Theme.of(context).copyWith(
                 colorScheme: ColorScheme.light(
@@ -280,9 +290,7 @@ class FormScreenState extends State<FormScreen> {
                         TextButton.styleFrom(primary: const Color(0xff666a86))),
               ),
               child: child!);
-        }
-      
-    );
+        });
     if (t != null) {
       setState(() {
         time = t;
