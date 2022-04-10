@@ -45,8 +45,8 @@ class HomePage extends StatelessWidget {
               flexibleSpace: Container(
                 decoration: BoxDecoration(
                     gradient: LinearGradient(colors: [
-                  const Color(0xff666a86),
-                  Color.fromARGB(255, 185, 131, 137)
+                  Color.fromRGBO(102, 106, 134, 1),
+                  Color.fromRGBO(185, 131, 137, 1)
                 ], begin: Alignment.bottomRight, end: Alignment.topLeft)),
               ),
               elevation: 20.0,
